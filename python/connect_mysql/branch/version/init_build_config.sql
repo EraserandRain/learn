@@ -1,0 +1,3 @@
+insert into build_config (module,configuration,branch,title) values ('Stylus','Release','version','STYLUS_DAILY_version')
+insert into build_config (module,configuration,branch,title) values ('StylusPlugins','Release','version','STYLUS_PLUGINS_DAILY_version')
+insert into build_config (module,configuration,branch,title) values ('StylusPlugins_SG','Release','version','STYLUS_PLUGINS_SG_DAILY_version')

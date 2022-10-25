@@ -1,0 +1,395 @@
+-- MySQL dump 10.11
+--
+-- Host: 10.120.110.140    Database: sqa_test_suite
+-- ------------------------------------------------------
+-- Server version	5.0.51b
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
+;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
+;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
+;
+/*!40101 SET NAMES utf8 */
+;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */
+;
+/*!40103 SET TIME_ZONE='+00:00' */
+;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */
+;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */
+;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */
+;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */
+;
+--
+-- Dumping data for table `package`
+--
+-- WHERE:  build='143'
+LOCK TABLES `package` WRITE;
+/*!40000 ALTER TABLE `package` DISABLE KEYS */
+;
+INSERT INTO `package`
+VALUES (
+        NULL,
+        5,
+        'Stylus/SLATEApp/bin/xxxCONFIGxxx/CIM_SRQ.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/bin/CIM_SRQ.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/SLATEApp/bin/xxxCONFIGxxx/CIMDLL.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/bin/CIMDLL.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/SLATEApp/bin/xxxCONFIGxxx/CIMUtil.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/bin/CIMUtil.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/CIMArray.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/CIMArray.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/CIMDialogConfig.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/CIMDialogConfig.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/CIMParam.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/CIMParam.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/CIMStatus.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/CIMStatus.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/CIMString.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/CIMString.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/CIMUtil.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/CIMUtil.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/ICIMFunctions.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/ICIMFunctions.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/IDUTValidation.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/IDUTValidation.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/IWOConfig.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/IWOConfig.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/ClientIncludes/CIMThread/IWOValidation.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/IWOValidation.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/SLATEApp/bin/xxxCONFIGxxx/CIMUtil.lib',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/lib/CIMUtil.lib'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOGUIPlugIn.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/tp-user/bin/WOGUIPlugIn.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOPlugIn.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/tp-user/bin/WOPlugIn.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOValidate.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/tp-user/bin/WOValidate.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOConfig_TemplateForWOValidate.xml',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/tp-user/bin/WOConfig_TemplateForWOValidate.xml'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOValidate_template.ini',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/tp-user/bin/WOValidate_template.ini'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/EngSiteTool/bin/xxxCONFIGxxx/CIM_SRQ.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/bin/CIM_SRQ.pdb'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/SLATEApp/bin/xxxCONFIGxxx/CIMDLL.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/bin/CIMDLL.pdb'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/EngSiteTool/bin/xxxCONFIGxxx/CIMUtil.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/bin/CIMUtil.pdb'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOGUIPlugIn.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/tp-user/bin/WOGUIPlugIn.pdb'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOPlugIn.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/tp-user/bin/WOPlugIn.pdb'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/WOValidate.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/tp-user/bin/WOValidate.pdb'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/ThermalControl.dll',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/tp-user/bin/ThermalControl.dll'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/tp-user/bin/ThermalControl.pdb',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/pdb/tp-user/bin/ThermalControl.pdb'
+    ),
+(
+        NULL,
+        5,
+        ' Stylus/ClientIncludes/CIMThread/IFanControl.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/include/IFanControl.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/DUTValidation.cpp',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/DUTValidation.cpp'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/DUTValidation.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/DUTValidation.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/HowToDebugValidationDll.txt',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/HowToDebugValidationDll.txt'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/ReadMe.txt',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/ReadMe.txt'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate.cpp',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate.cpp'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate.rc',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate.rc'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2008.vcproj',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2008.vcproj'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2012.vcxproj',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2012.vcxproj'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/WOConfig.cpp',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/WOConfig.cpp'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/WOConfig.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/WOConfig.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/WOValidation.cpp',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/WOValidation.cpp'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/WOValidation.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/WOValidation.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/dllmain.cpp',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/dllmain.cpp'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/resource.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/resource.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/stdafx.cpp',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/stdafx.cpp'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/stdafx.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/stdafx.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/targetver.h',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/targetver.h'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2008.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2008.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2010.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2010.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2010.vcxproj',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2010.vcxproj'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2012.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2012.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2013.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2013.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2013.vcxproj',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2013.vcxproj'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2015.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2015.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2015.vcxproj',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2015.vcxproj'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2017.sln',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2017.sln'
+    ),
+(
+        NULL,
+        5,
+        'Stylus/CIMThread/SampleValidate/SampleValidate_2017.vcxproj',
+        'STYLUS_PLUGINS_SG_DAILY_xxxBRANCHxxx/Plugins/Sample/SampleValidate/SampleValidate_2017.vcxproj'
+    );
+/*!40000 ALTER TABLE `package` ENABLE KEYS */
+;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */
+;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */
+;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */
+;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */
+;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
+;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
+;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
+;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */
+;
+-- Dump completed on 2021-06-15 21:17:51
