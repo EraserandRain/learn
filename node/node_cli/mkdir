@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const args = process.argv.slice(2).join(' ')
+if (fs.readdirSync(".").indexOf(args) == -1) {
+    fs.mkdirSync(args)
+} else {
+    console.log("Cannot create directory '" + args + "': File exists")
+}
