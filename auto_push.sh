@@ -2,8 +2,7 @@
 export LC_ALL=C
 current_date=$(date -d '0 day' '+%Y%m%d')
 set -e
-git init
-git add -A
+git add .
 git commit -m "test: Auto Deploy ${current_date}"
 cd -
 echo 'deploy success!'
