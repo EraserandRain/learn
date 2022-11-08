@@ -5,6 +5,7 @@ import os
 import fileinput
 import sys
 import re
+import yaml
 
 
 def set_version():
@@ -22,22 +23,22 @@ Option:      Branch Vesion
         return sys.argv[1]
 
 
+def db_config(db_file):
+    with open(db_file, 'r', encoding="utf-8") as f:
+        config = f.read()
+    return yaml.load(config, Loader=yaml.FullLoader)
+
 version = set_version()
-mysql_host = '127.0.0.1'
-mysql_port = 3306
-mysql_user = 'root'
-mysql_passwd = 'mysql57'
-mysql_db = 'testenv'
+db_info = db_config('db.yaml')
 db = pymysql.connect(
-    host=mysql_host,
-    port=mysql_port,
-    user=mysql_user,
-    passwd=mysql_passwd,
-    db=mysql_db,
-    charset='utf8'
+    host=db_info.get('host'),
+    port=db_info.get('port'),
+    user=db_info.get('user'),
+    passwd=db_info.get('passwd'),
+    db=db_info.get('db'),
+    charset=db_info.get('charset')
 )
 cursor = db.cursor()
-
 
 class FError(Exception):
     pass
