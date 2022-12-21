@@ -1,7 +1,6 @@
 package main
 import "fmt"
 
-
 func main(){
 	arr := [4]string{"a","b","c","d"}
 	fmt.Println(len(arr))

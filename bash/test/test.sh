@@ -10,10 +10,10 @@ function foo2() {
 	echo haha
 }
 
+local Device="Docker $(hostname -s)"
+
 function main() {
-	mkfifo cmd_exec_pipe
-	source ip a >cmd_exec_pipe &
-	<cmd_exec_pipe
+	echo $Device
 }
 
 # main
