@@ -7,15 +7,17 @@
 package leetcode
 // @lc code=start
 func romanToInt(s string) int {
-	for i:=0;i<len(s);i++ {
-		if s[len(s)-i] == "I" {
+	if len(s) >= 3 {
 
+		for i := 1; i < 3; i++ {
+			if s[len(s)-i] == 73 { // I
+
+			}
 		}
 	}
 }
+
 // @lc code=end
-
-
 
 /*
 // @lcpr case=start
@@ -38,6 +40,4 @@ func romanToInt(s string) int {
 // "MCMXCIV"\n
 // @lcpr case=end
 
- */
-
-
+*/

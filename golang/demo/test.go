@@ -7,7 +7,11 @@ import (
 )
 
 func main(){
-	for key,value := range "IVXLCDM" {
+	data := "IVXLCDM"
+	fmt.Println(data)
+	for key,value := range data {
 		fmt.Println(key,value)
 	}
 }
+
+func find(a )

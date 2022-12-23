@@ -1,8 +1,4 @@
 {
   "name": "vanilla-js",
-  "packageManager": "yarn@3.2.2",
-  "dependencies": {
-    "directory-tree": "^3.3.0",
-    "node": "^18.7.0"
-  }
+  "packageManager": "yarn@3.2.3"
 }
