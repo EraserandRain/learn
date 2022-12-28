@@ -13,5 +13,3 @@ func main(){
 		fmt.Println(key,value)
 	}
 }
-
-func find(a )
