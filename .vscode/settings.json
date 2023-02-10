@@ -36,5 +36,9 @@
                 "package leetcode"
             ]
         }
-    ]
+    ],
+    "files.associations": {
+        "stdio.h": "c"
+    },
+    "vim.useSystemClipboard": true
 }

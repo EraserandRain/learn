@@ -5,11 +5,11 @@ import re
 import fileinput
 import subprocess
 import json
-from include import cmd,grep
+from include.common import cmd,grep
 
 
 def main():
-
+    cmd('ls')
 
 
 
