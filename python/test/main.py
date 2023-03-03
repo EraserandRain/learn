@@ -1,48 +1,12 @@
-#!/usr/bin/env python3
-
-import datetime
-import os
-import subprocess
-import sys
-import re
-from include import cmd,grep
-
-log_file='default.log'
-
-class Logger(object):
-    def __init__(self, filename='default.log', stream=sys.stdout):
-        self.terminal = stream
-        self.log = open(filename, 'a')
-
-    def write(self, message):
-        self.terminal.write(message)
-        self.log.write(message)
-
-    def flush(self):
-        pass
-
-
-class Halo():
-    def __init__(self,name=haname):
+class Student(object):
+    def __init__(self, name, age):
         self.name = name
-        
+        self.age = age
 
-def main():
-    haname='haha'
-    print(Halo.name)
-    # now it works
-    print('print something')
-    print("output")
+    def hello(self):
+        print(f"my name is {self.name},{self.age} years old")
 
 
-
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    jack = Student('Jack', 18)
+    jack.hello()

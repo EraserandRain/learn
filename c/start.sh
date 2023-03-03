@@ -2,11 +2,12 @@
 
 CSOURCE="main.c"
 
-# main 
+# main
+echo "Cppcheck results:"
 cppcheck ${CSOURCE}
+echo "GCC results:"
 gcc ${CSOURCE}
 rm -rf pipe && mkfifo pipe
-./a.out > pipe &
-echo -e "Results:"
+./a.out >pipe &
+echo -e "Exec Results:"
 cat pipe
-
