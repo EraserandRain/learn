@@ -1,24 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"sync"
-	"time"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-var wg sync.WaitGroup
-
-func download(url string) {
-	fmt.Println("start to download", url)
-	time.Sleep(time.Second)
-	wg.Done()
-}
-
 func main() {
-	for i := 0; i < 3; i++ {
-		wg.Add(1)
-		go download("a.com/" + string(i+'0'))
-	}
-	wg.Wait()
-	fmt.Println("Done!")
+	r := gin.Default()
+	r.GET("/user/:name", func(c *gin.Context) {
+		name := c.Param("name")
+		c.String(http.StatusOK, "Hello %s", name)
+	})
+	r.Run(":8088")
 }
