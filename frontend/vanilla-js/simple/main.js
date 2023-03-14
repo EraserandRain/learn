@@ -1,7 +1,9 @@
+let menu = {
+    width: 200,
+    height: 300,
+    title: "My menu"
+}
 
-describe("pow", () => {
-    it("raises to n-th power", () => {
-        assert.equal(pow(2, 3), 8)
-    })
-})
-
+let foo = menu
+foo.width=300
+console.log(menu.width);
