@@ -6,4 +6,4 @@ let menu = {
 
 let foo = menu
 foo.width=300
-console.log(menu.width);
+console.log(menu.width)
