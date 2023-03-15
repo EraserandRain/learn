@@ -1,9 +1,15 @@
-let menu = {
-    width: 200,
-    height: 300,
-    title: "My menu"
+function Calc() {
+    this.read = (a, b) => {
+        this.a = a
+        this.b = b
+    }
+    this.sum = () => this.a + this.b
+    this.mul = () => this.a * this.b
 }
 
-let foo = menu
-foo.width=300
-console.log(menu.width)
+
+
+let calc = new Calc()
+calc.read(2, 3)
+console.log(calc.sum())
+console.log(calc.mul())

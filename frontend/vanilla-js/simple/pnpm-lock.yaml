@@ -2,9 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   chai: ^4.3.7
+  loadsh: ^0.0.4
 
 dependencies:
   chai: 4.3.7
+  loadsh: 0.0.4
 
 packages:
 
@@ -38,6 +40,11 @@ packages:
 
   /get-func-name/2.0.0:
     resolution: {integrity: sha1-6td0q+5y4gQJQzoGY2YCPdaIekE=}
+    dev: false
+
+  /loadsh/0.0.4:
+    resolution: {integrity: sha512-U+wLL8InpfRalWrr+0SuhWgGt10M4OyAk6G8xCYo2rwpiHtxZkWiFpjei0vO463ghW8LPCdhqQxXlMy2qicAEw==}
+    deprecated: This is a typosquat on the popular Lodash package. This is not maintained nor is the original Lodash package.
     dev: false
 
   /loupe/2.3.6:
