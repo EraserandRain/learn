@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: echo-job
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: echo-job
+        image: busybox
+        command: ["/bin/echo"]
+        args: ["hello", "world"]

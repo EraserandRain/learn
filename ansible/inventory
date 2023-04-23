@@ -1,0 +1,6 @@
+[node]
+master 
+host[1:3] 
+
+[worker]
+host[1:3]
