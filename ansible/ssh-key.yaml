@@ -1,0 +1,10 @@
+---
+- name: SSH Connection Config
+  hosts: worker
+  gather_facts: false
+  connection: local
+  tasks:
+  - name: SSH Connection Config
+    shell: |
+      ssh-keyscan {{inventory_hostname}} >> ~/.ssh/known_hosts
+      sshpass -p'vagrant' ssh-copy-id vagrant@{{inventory_hostname}}

@@ -1,0 +1,9 @@
+all:
+  children:
+    node:
+      hosts:
+        master:
+      children:
+        worker:
+          hosts:
+            host[1:3]: 

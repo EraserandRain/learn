@@ -1,9 +1,0 @@
----
-- name: SSH connection config
-  hosts: node
-  gather_facts: false
-  connection: local
-  tasks:
-  - name: test
-    debug:
-      msg: "hello world"
