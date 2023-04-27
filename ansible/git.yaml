@@ -1,0 +1,10 @@
+---
+- name: Checkout container repo
+  hosts: worker
+  gather_facts: false
+  tasks:
+    - name: Git clone "eraserandrain/container" repo
+      git:
+        repo: https://github.com/EraserandRain/container
+        dest: "{{ lookup('env', 'HOME') }}/container"
+        version: main

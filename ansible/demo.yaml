@@ -1,12 +1,19 @@
+---
 - name: Test
   hosts: worker
   gather_facts: false
+  connection: local
   tasks:
-    - name: Install Pyenv
-      ansible.builtin.shell: |
-        set -o pipefail
-        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-      args:
-        executable: /bin/bash
-        creates: /home/{{ lookup('env', 'USER') }}/.pyenv
-      changed_when: false
+    - include_tasks: "{{ item }}"
+      loop:
+        - demo-task.yaml
+    - name: Add new line
+      lineinfile:
+        path: 1.txt
+        line: haha
+      notify: print haha
+
+  handlers:
+    - name: print haha
+      debug:
+        msg: " haha is append in {{ inventory_hostname }}"  

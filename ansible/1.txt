@@ -4,3 +4,4 @@ second line in paragraph 1
 replace line
 first line in paragraph 2
 second line in paragraph 2
+haha

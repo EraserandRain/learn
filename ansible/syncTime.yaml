@@ -2,15 +2,15 @@
   hosts: node
   gather_facts: false
   tasks:
-    - name: Install ntpdate and sync time
-      block:
-        - name: Install ntpdate
-          become: true
-          ansible.builtin.apt:
-            name: ntpdate
-            state: present
-        - name: Sync time
-          become: true
-          changed_when: false
-          ansible.builtin.shell: |
-            ntpdate ntp1.aliyun.com
+  - name: Install ntpdate and sync time
+    block:
+    - name: Install ntpdate
+      become: true
+      apt:
+        name: ntpdate
+        state: present
+    - name: Sync time
+      become: true
+      changed_when: false
+      shell: |
+        ntpdate ntp1.aliyun.com
