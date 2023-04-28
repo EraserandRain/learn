@@ -3,17 +3,22 @@
   hosts: worker
   gather_facts: false
   connection: local
+  vars:
+    - dest_file: 1.txt
   tasks:
     - include_tasks: "{{ item }}"
       loop:
         - demo-task.yaml
     - name: Add new line
       lineinfile:
-        path: 1.txt
+        path: "{{ dest_file }}"
         line: haha
-      notify: print haha
+      notify: Print changed
+    - name: Print hello world
+      debug:
+        msg: hello world
 
   handlers:
-    - name: print haha
+    - name: Print changed
       debug:
-        msg: " haha is append in {{ inventory_hostname }}"  
+        msg: "{{ dest_file }} has been changed"

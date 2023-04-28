@@ -805,3 +805,351 @@ The offending line appears to be:
 2023-04-27 10:32:51,632 p=1860258 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
 
 2023-04-27 10:32:51,634 p=1860258 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 01:35:38,013 p=1929436 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 01:35:38,022 p=1929436 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:37:14,252 p=1938986 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:37:14,257 p=1938986 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:37:32,409 p=1939162 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:37:32,411 p=1939162 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:37:36,532 p=1939199 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:37:36,535 p=1939199 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:41:26,958 p=1940023 u=vagrant n=ansible | PLAY [Test] ***************************************************************************************************************
+2023-04-28 02:41:27,119 p=1940023 u=vagrant n=ansible | TASK [include_tasks] ******************************************************************************************************
+2023-04-28 02:41:27,463 p=1940023 u=vagrant n=ansible | included: /home/vagrant/learn/ansible/demo-task.yaml for worker1, worker2, worker3 => (item=demo-task.yaml)
+2023-04-28 02:41:27,495 p=1940023 u=vagrant n=ansible | TASK [Test] ***************************************************************************************************************
+2023-04-28 02:41:27,836 p=1940023 u=vagrant n=ansible | ok: [worker1] => {
+    "msg": "worker1"
+}
+2023-04-28 02:41:27,881 p=1940023 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "worker2"
+}
+2023-04-28 02:41:27,884 p=1940023 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "worker3"
+}
+2023-04-28 02:41:27,905 p=1940023 u=vagrant n=ansible | TASK [Add new line] *******************************************************************************************************
+2023-04-28 02:41:30,154 p=1940023 u=vagrant n=ansible | ok: [worker2]
+2023-04-28 02:41:30,350 p=1940023 u=vagrant n=ansible | ok: [worker3]
+2023-04-28 02:41:30,365 p=1940023 u=vagrant n=ansible | ok: [worker1]
+2023-04-28 02:41:30,634 p=1940023 u=vagrant n=ansible | PLAY RECAP ****************************************************************************************************************
+2023-04-28 02:41:30,636 p=1940023 u=vagrant n=ansible | worker1                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:41:30,639 p=1940023 u=vagrant n=ansible | worker2                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:41:30,658 p=1940023 u=vagrant n=ansible | worker3                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:41:48,694 p=1940340 u=vagrant n=ansible | PLAY [Test] ***************************************************************************************************************
+2023-04-28 02:41:48,896 p=1940340 u=vagrant n=ansible | TASK [include_tasks] ******************************************************************************************************
+2023-04-28 02:41:49,253 p=1940340 u=vagrant n=ansible | included: /home/vagrant/learn/ansible/demo-task.yaml for worker1, worker3, worker2 => (item=demo-task.yaml)
+2023-04-28 02:41:49,292 p=1940340 u=vagrant n=ansible | TASK [Test] ***************************************************************************************************************
+2023-04-28 02:41:49,617 p=1940340 u=vagrant n=ansible | ok: [worker1] => {
+    "msg": "worker1"
+}
+2023-04-28 02:41:49,734 p=1940340 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "worker2"
+}
+2023-04-28 02:41:49,833 p=1940340 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "worker3"
+}
+2023-04-28 02:41:49,861 p=1940340 u=vagrant n=ansible | TASK [Add new line] *******************************************************************************************************
+2023-04-28 02:41:52,797 p=1940340 u=vagrant n=ansible | ERROR! The requested handler 'print haha' was not found in either the main handlers list nor in the listening handlers list
+2023-04-28 02:42:25,115 p=1940994 u=vagrant n=ansible | PLAY [Test] ***************************************************************************************************************
+2023-04-28 02:42:26,003 p=1940994 u=vagrant n=ansible | TASK [include_tasks] ******************************************************************************************************
+2023-04-28 02:42:27,601 p=1940994 u=vagrant n=ansible | included: /home/vagrant/learn/ansible/demo-task.yaml for worker1, worker2, worker3 => (item=demo-task.yaml)
+2023-04-28 02:42:27,818 p=1940994 u=vagrant n=ansible | TASK [Test] ***************************************************************************************************************
+2023-04-28 02:42:28,846 p=1940994 u=vagrant n=ansible | ok: [worker1] => {
+    "msg": "worker1"
+}
+2023-04-28 02:42:28,940 p=1940994 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "worker2"
+}
+2023-04-28 02:42:29,187 p=1940994 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "worker3"
+}
+2023-04-28 02:42:29,253 p=1940994 u=vagrant n=ansible | TASK [Add new line] *******************************************************************************************************
+2023-04-28 02:42:32,880 p=1941095 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:42:32,939 p=1941095 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:42:36,875 p=1940994 u=vagrant n=ansible | ok: [worker3]
+2023-04-28 02:42:37,488 p=1940994 u=vagrant n=ansible | ok: [worker2]
+2023-04-28 02:42:37,552 p=1940994 u=vagrant n=ansible | ok: [worker1]
+2023-04-28 02:42:38,692 p=1940994 u=vagrant n=ansible | PLAY RECAP ****************************************************************************************************************
+2023-04-28 02:42:38,692 p=1940994 u=vagrant n=ansible | worker1                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:42:38,693 p=1940994 u=vagrant n=ansible | worker2                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:42:38,693 p=1940994 u=vagrant n=ansible | worker3                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:42:41,222 p=1941208 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:42:41,224 p=1941208 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:42:46,632 p=1941415 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:42:46,635 p=1941415 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:42:50,214 p=1941435 u=vagrant n=ansible | PLAY [Test] ***************************************************************************************************************
+2023-04-28 02:42:50,427 p=1941435 u=vagrant n=ansible | TASK [include_tasks] ******************************************************************************************************
+2023-04-28 02:42:51,360 p=1941435 u=vagrant n=ansible | included: /home/vagrant/learn/ansible/demo-task.yaml for worker1, worker2, worker3 => (item=demo-task.yaml)
+2023-04-28 02:42:51,402 p=1941435 u=vagrant n=ansible | TASK [Test] ***************************************************************************************************************
+2023-04-28 02:42:51,938 p=1941435 u=vagrant n=ansible | ok: [worker1] => {
+    "msg": "worker1"
+}
+2023-04-28 02:42:52,003 p=1941435 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "worker2"
+}
+2023-04-28 02:42:52,321 p=1941435 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "worker3"
+}
+2023-04-28 02:42:52,418 p=1941435 u=vagrant n=ansible | TASK [Add new line] *******************************************************************************************************
+2023-04-28 02:42:55,825 p=1941435 u=vagrant n=ansible | changed: [worker2]
+2023-04-28 02:42:55,869 p=1941435 u=vagrant n=ansible | ok: [worker3]
+2023-04-28 02:42:56,024 p=1941435 u=vagrant n=ansible | ok: [worker1]
+2023-04-28 02:42:56,282 p=1941435 u=vagrant n=ansible | RUNNING HANDLER [Print haha] **********************************************************************************************
+2023-04-28 02:42:56,489 p=1941435 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "haha is append in worker2"
+}
+2023-04-28 02:42:56,618 p=1941435 u=vagrant n=ansible | PLAY RECAP ****************************************************************************************************************
+2023-04-28 02:42:56,622 p=1941435 u=vagrant n=ansible | worker1                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:42:56,623 p=1941435 u=vagrant n=ansible | worker2                    : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:42:56,627 p=1941435 u=vagrant n=ansible | worker3                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:46:03,043 p=1942760 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:46:08,891 p=1942788 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:46:15,701 p=1942878 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:46:18,388 p=1942948 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:46:21,077 p=1942975 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:46:27,126 p=1943033 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:46:28,633 p=1943043 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 15, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:47:28,793 p=1943562 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 17, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:47:38,899 p=1943717 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 17, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:48:06,277 p=1944110 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 17, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print haha
+    - name: Print
+      ^ here
+
+2023-04-28 02:48:12,012 p=1944220 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 17, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print changed
+    - name: Print
+      ^ here
+
+2023-04-28 02:48:15,187 p=1944231 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 17, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print changed
+    - name: Print he
+      ^ here
+
+2023-04-28 02:48:24,875 p=1944398 u=vagrant n=ansible | ERROR! no module/action detected in task.
+
+The error appears to be in '/home/vagrant/learn/ansible/demo.yaml': line 17, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      notify: Print changed
+    - name: Print hello world
+      ^ here
+
+2023-04-28 02:49:21,410 p=1944973 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:21,436 p=1944973 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:26,973 p=1945192 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:27,015 p=1945192 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:29,164 p=1945224 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:29,204 p=1945224 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:33,990 p=1945323 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:33,994 p=1945323 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:35,181 p=1945241 u=vagrant n=ansible | PLAY [Test] ***************************************************************************************************************
+2023-04-28 02:49:37,304 p=1945241 u=vagrant n=ansible | TASK [include_tasks] ******************************************************************************************************
+2023-04-28 02:49:37,795 p=1945373 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:37,797 p=1945373 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:40,139 p=1945241 u=vagrant n=ansible | included: /home/vagrant/learn/ansible/demo-task.yaml for worker1, worker2, worker3 => (item=demo-task.yaml)
+2023-04-28 02:49:40,612 p=1945241 u=vagrant n=ansible | TASK [Test] ***************************************************************************************************************
+2023-04-28 02:49:41,808 p=1945241 u=vagrant n=ansible | ok: [worker1] => {
+    "msg": "worker1"
+}
+2023-04-28 02:49:42,312 p=1945241 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "worker2"
+}
+2023-04-28 02:49:42,660 p=1945241 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "worker3"
+}
+2023-04-28 02:49:42,990 p=1945241 u=vagrant n=ansible | TASK [Add new line] *******************************************************************************************************
+2023-04-28 02:49:43,629 p=1945411 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:43,631 p=1945411 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:51,423 p=1945443 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:51,483 p=1945443 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:53,762 p=1945468 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:53,840 p=1945468 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:49:56,513 p=1945488 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:49:56,544 p=1945488 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:00,601 p=1945241 u=vagrant n=ansible | changed: [worker3]
+2023-04-28 02:50:01,415 p=1945241 u=vagrant n=ansible | ok: [worker1]
+2023-04-28 02:50:01,614 p=1945241 u=vagrant n=ansible | ok: [worker2]
+2023-04-28 02:50:01,804 p=1945507 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:01,806 p=1945507 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:01,850 p=1945241 u=vagrant n=ansible | TASK [Print hello world] **************************************************************************************************
+2023-04-28 02:50:02,602 p=1945241 u=vagrant n=ansible | ok: [worker1] => {
+    "msg": "hello world"
+}
+2023-04-28 02:50:02,854 p=1945241 u=vagrant n=ansible | ok: [worker2] => {
+    "msg": "hello world"
+}
+2023-04-28 02:50:03,165 p=1945241 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "hello world"
+}
+2023-04-28 02:50:03,395 p=1945536 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:03,430 p=1945536 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:04,799 p=1945241 u=vagrant n=ansible | RUNNING HANDLER [Print changed] *******************************************************************************************
+2023-04-28 02:50:05,411 p=1945241 u=vagrant n=ansible | ok: [worker3] => {
+    "msg": "1.txt has been changed"
+}
+2023-04-28 02:50:05,872 p=1945241 u=vagrant n=ansible | PLAY RECAP ****************************************************************************************************************
+2023-04-28 02:50:05,876 p=1945241 u=vagrant n=ansible | worker1                    : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:50:05,879 p=1945241 u=vagrant n=ansible | worker2                    : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:50:05,892 p=1945241 u=vagrant n=ansible | worker3                    : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-04-28 02:50:20,218 p=1945820 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:20,229 p=1945820 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:25,255 p=1945880 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:25,306 p=1945880 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:27,929 p=1945904 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:27,940 p=1945904 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:31,720 p=1945951 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:31,728 p=1945951 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:37,763 p=1945995 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:37,780 p=1945995 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:42,579 p=1946043 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:42,581 p=1946043 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:43,542 p=1946063 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:43,545 p=1946063 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:43,905 p=1946057 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:43,915 p=1946057 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:44,095 p=1946069 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:44,109 p=1946069 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 02:50:45,622 p=1946077 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 02:50:45,625 p=1946077 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 05:05:54,496 p=1969863 u=vagrant n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: worker
+
+2023-04-28 05:05:54,500 p=1969863 u=vagrant n=ansible | playbook: demo.yaml
+2023-04-28 06:13:04,365 p=1980383 u=vagrant n=ansible | - Role mysql was created successfully
