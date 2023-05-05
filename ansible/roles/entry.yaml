@@ -1,0 +1,5 @@
+- name: Play with role
+  hosts: worker
+  gather_facts: false
+  roles:
+    - first-role
