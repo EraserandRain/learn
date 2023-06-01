@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: maria-cm
+data:
+  DATABASE: "db"
+  USER: "wp"
+  PASSWORD: "123"
+  ROOT_PASSWORD: "123"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maria-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maria-dep
+  template:
+    metadata:
+      labels:
+        app: maria-dep
+    spec:
+      containers:
+        - name: maria-dep
+          image: mariadb:10
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - prefix: "MARIADB_"
+              configMapRef:
+                name: maria-cm
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maria-svc
+  labels:
+    app: maria-dep
+spec:
+  selector:
+    app: maria-dep
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
