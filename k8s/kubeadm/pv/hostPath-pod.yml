@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ngx-pvc-pod
+  labels:
+    name: ngx-pvc-pod
+spec:
+  containers:
+  - name: ngx-pvc-pod
+    image: nginx:alpine
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name: mypvc-vol
+        mountPath: /tmp
+  
+  volumes:
+    - name: mypvc-vol
+      persistentVolumeClaim:
+        claimName: mypvc

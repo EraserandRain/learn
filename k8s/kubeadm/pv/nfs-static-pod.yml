@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-static-pod
+  labels:
+    name: nfs-static-pod
+spec:
+  volumes:
+    - name: nfs-static-pod-vol
+      persistentVolumeClaim:
+        claimName: nfs-static-pvc
+  containers:
+  - name: nfs-static-pod
+    image: nginx:alpine
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - mountPath: /tmp
+        name: nfs-static-pod-vol
