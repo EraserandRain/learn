@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ngx
+  template:
+    metadata:
+      labels:
+        app: ngx
+    spec:
+      containers:
+      - name: ngx
+        image: nginx:alpine
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

@@ -11,43 +11,59 @@ data:
 
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: maria-dep
+  name: maria-sts
+  labels:
+    app: maria-sts 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: maria-dep
+      app: maria-sts
+
+  # headless pvc
+  serviceName: maria-pvc
+  # pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: maria-100m-pvc
+    spec:
+      storageClassName: nfs-client
+      accessModes: [ "ReadWriteMany" ]
+      resources:
+        requests:
+          storage: 100Mi
+ 
   template:
     metadata:
       labels:
-        app: maria-dep
+        app: maria-sts
     spec:
       containers:
-        - name: maria-dep
-          image: mariadb:10
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
-          ports:
-            - containerPort: 3306
-          envFrom:
-            - prefix: "MARIADB_"
-              configMapRef:
-                name: maria-cm
-
+      - name: mariadb
+        image: mariadb:10
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: maria-100m-pvc
+          mountPath: /var/lib/mysql
+        envFrom:
+        - prefix: 'MARIADB_'
+          configMapRef:
+            name: maria-cm
+   
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: maria-svc
   labels:
-    app: maria-dep
+    app: maria-sts
 spec:
   selector:
-    app: maria-dep
+    app: maria-sts
   ports:
     - port: 3306
       targetPort: 3306

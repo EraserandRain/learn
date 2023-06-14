@@ -3,8 +3,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ngx-dep
+  annotations:
+    kubernetes.io/change-cause: update to v2, ngx=1.22
 spec:
-  replicas: 2
+  minReadySeconds: 15
+  replicas: 4
   selector:
     matchLabels:
       app: ngx-dep
@@ -20,7 +23,7 @@ spec:
 
       containers:
       - name: ngx-dep
-        image: nginx:alpine
+        image: nginx:1.22-alpine
         resources:
           limits:
             memory: "128Mi"
