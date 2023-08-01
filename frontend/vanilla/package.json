@@ -1,0 +1,21 @@
+{
+  "name": "vanilla",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "pnpm dlx mocha --recursive src/test"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "chai": "^4.3.7",
+    "loadsh": "^0.0.4"
+  },
+  "volta": {
+    "node": "18.17.0"
+  }
+}

@@ -6,11 +6,10 @@ use Foo ':all';
 use File::Tee qw(tee);
 
 
-tee(STDOUT,'>','1.log');
 
-print("hello world\n");
-system('ls');
-
+my ($pcieVer, $stylusTrunkVerPrefix) = ("","");
 
 # main
+($pcieVer, $stylusTrunkVerPrefix) = ("hello","world");
 
+print "msg: $pcieVer $stylusTrunkVerPrefix";
