@@ -1,0 +1,5 @@
+---
+# tasks file for first-role
+- name: Test
+  debug:
+    msg: "{{ inventory_hostname }}"

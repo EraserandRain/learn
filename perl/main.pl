@@ -6,10 +6,20 @@ use Foo ':all';
 use File::Tee qw(tee);
 
 
-
-my ($pcieVer, $stylusTrunkVerPrefix) = ("","");
-
+my $build_server = `hostname`;
+$build_server =~ s/\n//g;
 # main
-($pcieVer, $stylusTrunkVerPrefix) = ("hello","world");
+# sub getMail(){
 
-print "msg: $pcieVer $stylusTrunkVerPrefix";
+# }
+print "================================================\n"
+  ."Start Build Step ... \n"
+  ."================================================\n";
+print "Build Server: ".$build_server."\n";
+
+sub getMail(){
+    print "haha\n";
+    print "Build Server: ".$build_server."\n";
+}
+
+getMail();
