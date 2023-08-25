@@ -1,1 +1,5 @@
-let sym = Symbol.for("name")
+async function f(){
+  return 1
+}
+
+f().then(console.log)
