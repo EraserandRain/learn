@@ -8,7 +8,7 @@ type LicenseTableListItem = {
     serial_number: React.Key
     uuid: React.Key
     license_key: React.Key
-    description?: string
+    desc?: string
     is_expired: boolean
     expiration_date: number
     createdAt: number
@@ -17,10 +17,10 @@ type LicenseTableListItem = {
 
 const examples = {
     regionEnum: {
-        0: "Japan",
-        1: "Europe",
-        2: "North America",
-        3: "Asia Pacific"
+        0: { text: "Japan"},
+        1: { text: "Europe"},
+        2: { text: "North America"},
+        3: { text: "Asia Pacific" }
     },
     systemEnum: {
         0: "CRM",
@@ -41,7 +41,7 @@ for (let i = 1; i <= 30; i++) {
         serial_number: `serial_number ${i}`,
         uuid: `uuid ${i}`,
         license_key: `license_key ${i}`,
-        description: ``,
+        desc: ``,
         expiration_date: Date.now() - Math.floor(Math.random() * 2000),
         is_expired: true,
         createdAt: Date.now() - Math.floor(Math.random() * 2000),
@@ -49,4 +49,4 @@ for (let i = 1; i <= 30; i++) {
     });
 }
 
-export { LicenseTableListItem, testDataSource } 
+export { LicenseTableListItem, testDataSource, examples } 

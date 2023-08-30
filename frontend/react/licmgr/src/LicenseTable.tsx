@@ -1,73 +1,18 @@
-import React, { useState } from 'react'
-import { Table, TableColumnProps } from 'antd'
-import { LicenseTableListItem, testDataSource } from './testData'
-import type { ColumnsState, ProColumns } from '@ant-design/pro-components';
-import { ProTable } from '@ant-design/pro-components';
+import React, { useState, useRef } from 'react'
+import { Table, TableColumnProps, Form, Button, Input, Space, Tag } from 'antd'
+import { LicenseTableListItem, testDataSource, examples } from './testData'
+import type { ColumnsState, ProColumns, ActionType } from '@ant-design/pro-components';
+import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
 
-const columns: ProColumns<LicenseTableListItem>[] = [
-    {
-        title: 'ID',
-        dataIndex: 'id',
-        key: 'id'
-    }, {
-        title: 'Region',
-        dataIndex: 'region',
-        key: 'region'
-    }, {
-        title: 'System',
-        dataIndex: 'system',
-        key: 'system'
-    }, {
-        title: "AAI ID",
-        dataIndex: 'aai_id',
-        key: 'aai_id'
-    }, {
-        title: 'Micron ID',
-        dataIndex: 'micron_id',
-        key: 'micron_id'
-    }, {
-        title: 'Serial Number',
-        dataIndex: 'serial_number',
-        key: 'serial_number'
-    }, {
-        title: 'UUID',
-        dataIndex: 'uuid',
-        key: 'uuid'
-    }, {
-        title: 'License Key',
-        dataIndex: 'license_key',
-        key: 'license_key'
-    }, {
-        title: 'Description',
-        dataIndex: "description",
-        key: "description"
-    }, {
-        title: 'Is Expired',
-        dataIndex: 'is_expired',
-        key: 'is_expired'
-    }, {
-        title: 'Expiration_date',
-        dataIndex: 'expiration_date',
-        key: 'expiration_date',
-        valueType: 'date'
-    }, {
-        title: 'Created Time',
-        dataIndex: 'createdAt',
-        key: 'createdAt',
-        valueType: 'date'
-    }, {
-        title: "Last Updated Time",
-        dataIndex: "updatedAt",
-        key: "updatedAt",
-        valueType: 'date'
-    }, {
-        title: "Action",
-        key: 'option',
-        width: 120,
-        valueType: "option",
-        render: () => [<a key="1">Edit</a>, <a key="2">Delete</a>]
-    }
-]
+const waitTime = (time: number = 100) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, time);
+    });
+};
+
+
 
 const LicenseTable = () => {
     const [columnsStateMap, setColumnsStateMap] = useState<Record<string, ColumnsState>>({
@@ -84,30 +29,138 @@ const LicenseTable = () => {
             show: false,
         }
     })
+
+    const actionRef = useRef<ActionType>()
+    const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([])
+    const [dataSource, setDataSource] = useState<readonly LicenseTableListItem[]>([])
+    const form = Form.useForm()
+
+    const columns: ProColumns<LicenseTableListItem>[] = [
+        {
+            title: 'ID',
+            dataIndex: 'id',
+            readonly: true,
+            width: '5%'
+        }, {
+            title: 'Region',
+            dataIndex: 'region',
+            filters: true,
+            onFilter: true,
+            valueType: 'select',
+            valueEnum: examples.regionEnum
+        }, {
+            title: 'System',
+            dataIndex: 'system',
+            filters: true,
+            onFilter: true,
+            valueType: 'select',
+            valueEnum: examples.systemEnum
+        }, {
+            title: "AAI ID",
+            dataIndex: 'aai_id',
+            key: 'aai_id'
+        }, {
+            title: 'Micron ID',
+            dataIndex: 'micron_id',
+            key: 'micron_id'
+        }, {
+            title: 'Serial Number',
+            dataIndex: 'serial_number',
+            key: 'serial_number'
+        }, {
+            title: 'UUID',
+            dataIndex: 'uuid',
+            key: 'uuid'
+        }, {
+            title: 'License Key',
+            dataIndex: 'license_key',
+            key: 'license_key',
+            hideInSetting: true
+        }, {
+            title: 'Description',
+            dataIndex: "desc",
+        }, {
+            title: 'Is Expired',
+            dataIndex: 'is_expired',
+            key: 'is_expired'
+        }, {
+            title: 'Expiration_date',
+            dataIndex: 'expiration_date',
+            key: 'expiration_date',
+            valueType: 'date'
+        }, {
+            title: 'Created Time',
+            dataIndex: 'createdAt',
+            key: 'createdAt',
+            valueType: 'date',
+            hideInSearch: true
+        }, {
+            title: "Last Updated Time",
+            dataIndex: "updatedAt",
+            key: "updatedAt",
+            valueType: 'date',
+            hideInSearch: true
+        }, {
+            title: "Action",
+            key: 'option',
+            width: '10%',
+            valueType: "option",
+            render: (text, record, _, action) => [
+                <a key="editable" onClick={() => { action?.startEditable?.(record.id) }}>Edit</a>,
+                <a key="delete" onClick={() => { setDataSource(testDataSource.filter((item) => item.id !== record.id)) }}>Delete</a>
+            ]
+        }
+    ]
     return (
-        <ProTable<LicenseTableListItem, { keyWord?: string }>
-            columns={columns}
-            request={(params) => Promise.resolve({
-                data: testDataSource.filter((item) => {
-                    if (!params?.keyWord) {
-                        return true
-                    }
-                    if (item.region.includes(params?.keyWord) || item.system.includes(params?.keyWord)) {
-                        return true
-                    }
-                    return false
-                }),
-                success: true
-            })}
-            options={{ search: true }}
-            rowKey="key"
-            columnsState={{
-                value: columnsStateMap,
-                onChange: setColumnsStateMap
-            }}
-            search={false}
-            dateFormatter="string"
-            headerTitle="License Record"
-        />
+        <>
+            <Space>
+                <Button
+                    type="primary"
+                    onClick={() => {
+                        actionRef.current?.addEditRecord?.({
+                            id: (Math.random() * 1000000).toFixed(0),
+                            title: '新的一行',
+                        });
+                    }}
+                >
+                    Add
+                </Button>
+                <Button
+                    key="rest"
+                    onClick={() => {
+                        form.resetFields();
+                    }}
+                >
+                    Reset
+                </Button>
+            </Space>
+            <EditableProTable<LicenseTableListItem>
+                columns={columns}
+                request={async () => ({
+                    data: testDataSource,
+                    total: 3,
+                    success: true,
+                })}
+                value={dataSource}
+                options={{ search: true }}
+                rowKey="id"
+                columnsState={{
+                    value: columnsStateMap,
+                    onChange: setColumnsStateMap
+                }}
+                dateFormatter="string"
+                headerTitle="License Record"
+                pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30'] }}
+                editable={{
+                    form,
+                    editableKeys,
+                    onSave: async () => {
+                        await waitTime(2000);
+                    },
+                    onChange: setEditableRowKeys,
+                    actionRender: (row, config, dom) => [dom.save, dom.cancel],
+                }}
+            />
+        </>
     )
 }; export default LicenseTable;
