@@ -29,9 +29,9 @@ const examples = {
     }
 }
 // Randomly Generated Table Data
-const testDataSource: LicenseType[] = []
+const defaultData: LicenseType[] = []
 for (let i = 1; i <= 30; i++) {
-    testDataSource.push({
+    defaultData.push({
         key: i,
         id: i,
         region: examples.regionEnum[Math.floor(Math.random() * 10) % 4],
@@ -49,4 +49,4 @@ for (let i = 1; i <= 30; i++) {
     });
 }
 
-export { LicenseType, testDataSource, examples } 
+export { LicenseType, defaultData, examples } 

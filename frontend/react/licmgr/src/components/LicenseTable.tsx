@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Form, Button, Input, Space } from 'antd'
-import { LicenseType, testDataSource, examples } from './testData'
+import { LicenseType, defaultData, examples } from './testData'
 import type { ColumnsState, ProColumns, ActionType } from '@ant-design/pro-components';
 import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
 
@@ -11,8 +11,6 @@ const waitTime = (time: number = 100) => {
         }, time);
     });
 };
-
-
 
 const LicenseTable = () => {
     const actionRef = useRef<ActionType>()
@@ -31,15 +29,16 @@ const LicenseTable = () => {
             dataIndex: 'region',
             filters: true,
             onFilter: true,
-            valueType: 'select',
-            valueEnum: examples.regionEnum
+            // valueEnum: "",
+            // valueType: 'select',
+            // valueEnum: examples.regionEnum
         }, {
             title: 'System',
             dataIndex: 'system',
             filters: true,
             onFilter: true,
-            valueType: 'select',
-            valueEnum: examples.systemEnum
+            // valueType: 'select',
+            // valueEnum: examples.systemEnum
         }, {
             title: "AAI ID",
             dataIndex: 'aai_id',
@@ -92,7 +91,7 @@ const LicenseTable = () => {
             valueType: "option",
             render: (text, record, _, action) => [
                 <a key="editable" onClick={() => { action?.startEditable?.(record.id) }}>Edit</a>,
-                <a key="delete" onClick={() => { setDataSource(testDataSource.filter((item) => item.id !== record.id)) }}>Delete</a>
+                <a key="delete" onClick={() => { setDataSource(defaultData.filter((item) => item.id !== record.id)) }}>Delete</a>
             ]
         }
     ]
@@ -121,11 +120,16 @@ const LicenseTable = () => {
             </Space>
             <EditableProTable<LicenseType>
                 rowKey="id"
+                scroll={{
+                    x: 960,
+                }}
                 actionRef={actionRef}
-                columns={columns}
+                headerTitle="License Record"
+                maxLength={5}
                 recordCreatorProps={false}
+                columns={columns}
                 request={async () => ({
-                    data: testDataSource,
+                    data: defaultData,
                     total: 3,
                     success: true,
                 })}
@@ -133,7 +137,6 @@ const LicenseTable = () => {
                 onChange={setDataSource}
                 options={{ search: true }}
                 dateFormatter="string"
-                headerTitle="License Record"
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30'] }}
                 editable={{
                     form,
@@ -147,4 +150,5 @@ const LicenseTable = () => {
             />
         </>
     )
-}; export default LicenseTable;
+}
+export default LicenseTable;
