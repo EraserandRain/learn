@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
-import { Table, TableColumnProps, Form, Button, Input, Space, Tag } from 'antd'
-import { LicenseTableListItem, testDataSource, examples } from './testData'
+import { Form, Button, Input, Space } from 'antd'
+import { LicenseType, testDataSource, examples } from './testData'
 import type { ColumnsState, ProColumns, ActionType } from '@ant-design/pro-components';
 import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
 
@@ -15,27 +15,12 @@ const waitTime = (time: number = 100) => {
 
 
 const LicenseTable = () => {
-    const [columnsStateMap, setColumnsStateMap] = useState<Record<string, ColumnsState>>({
-        description: {
-            show: false,
-        },
-        license_key: {
-            show: false,
-        },
-        createdAt: {
-            show: false,
-        },
-        updatedAt: {
-            show: false,
-        }
-    })
-
     const actionRef = useRef<ActionType>()
     const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([])
-    const [dataSource, setDataSource] = useState<readonly LicenseTableListItem[]>([])
-    const form = Form.useForm()
+    const [dataSource, setDataSource] = useState<readonly LicenseType[]>([])
+    const [form] = Form.useForm()
 
-    const columns: ProColumns<LicenseTableListItem>[] = [
+    const columns: ProColumns<LicenseType>[] = [
         {
             title: 'ID',
             dataIndex: 'id',
@@ -134,20 +119,19 @@ const LicenseTable = () => {
                     Reset
                 </Button>
             </Space>
-            <EditableProTable<LicenseTableListItem>
+            <EditableProTable<LicenseType>
+                rowKey="id"
+                actionRef={actionRef}
                 columns={columns}
+                recordCreatorProps={false}
                 request={async () => ({
                     data: testDataSource,
                     total: 3,
                     success: true,
                 })}
                 value={dataSource}
+                onChange={setDataSource}
                 options={{ search: true }}
-                rowKey="id"
-                columnsState={{
-                    value: columnsStateMap,
-                    onChange: setColumnsStateMap
-                }}
                 dateFormatter="string"
                 headerTitle="License Record"
                 pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30'] }}

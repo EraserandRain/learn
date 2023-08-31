@@ -1,9 +1,7 @@
 import React from 'react';
-import LicenseTable from './LicenseTable';
-import { Button } from 'antd'
-import { EditableProTable } from '@ant-design/pro-components';
-import MyProTable from './Protable';
-import MyEditableProTable from './EditableProtable';
+import LicenseTable from './components/LicenseTable';
+import MyProTable from './components/Protable';
+import MyEditableProTable from './components/EditableProtable';
 
 const App = () => (
     <div className="App">

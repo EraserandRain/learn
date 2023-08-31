@@ -1,4 +1,4 @@
-type LicenseTableListItem = {
+type LicenseType = {
     key: number
     id: React.Key
     region: string
@@ -29,7 +29,7 @@ const examples = {
     }
 }
 // Randomly Generated Table Data
-const testDataSource: LicenseTableListItem[] = []
+const testDataSource: LicenseType[] = []
 for (let i = 1; i <= 30; i++) {
     testDataSource.push({
         key: i,
@@ -49,4 +49,4 @@ for (let i = 1; i <= 30; i++) {
     });
 }
 
-export { LicenseTableListItem, testDataSource, examples } 
+export { LicenseType, testDataSource, examples } 
