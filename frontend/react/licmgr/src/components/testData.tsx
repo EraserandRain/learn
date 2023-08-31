@@ -1,5 +1,4 @@
 type LicenseType = {
-    key: number
     id: React.Key
     region: string
     system: string
@@ -16,23 +15,22 @@ type LicenseType = {
 }
 
 const examples = {
-    regionEnum: {
-        0: { text: "Japan"},
-        1: { text: "Europe"},
-        2: { text: "North America"},
-        3: { text: "Asia Pacific" }
-    },
-    systemEnum: {
-        0: "CRM",
-        1: "ERP",
-        2: "Email"
-    }
+    regionEnum: [
+        "Japan",
+        "Europe",
+        "North America",
+        "Asia Pacific"
+    ],
+    systemEnum: [
+        "CRM",
+        "ERP",
+        "Email"
+    ]
 }
 // Randomly Generated Table Data
 const defaultData: LicenseType[] = []
 for (let i = 1; i <= 30; i++) {
     defaultData.push({
-        key: i,
         id: i,
         region: examples.regionEnum[Math.floor(Math.random() * 10) % 4],
         system: examples.systemEnum[Math.floor(Math.random() * 10) % 3],
@@ -49,4 +47,4 @@ for (let i = 1; i <= 30; i++) {
     });
 }
 
-export { LicenseType, defaultData, examples } 
+export { LicenseType, defaultData } 
