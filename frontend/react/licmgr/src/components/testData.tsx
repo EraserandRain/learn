@@ -29,7 +29,7 @@ const examples = {
 }
 // Randomly Generated Table Data
 const defaultData: LicenseType[] = []
-for (let i = 1; i <= 30; i++) {
+for (let i = 1; i <= 5; i++) {
     defaultData.push({
         id: i,
         region: examples.regionEnum[Math.floor(Math.random() * 10) % 4],

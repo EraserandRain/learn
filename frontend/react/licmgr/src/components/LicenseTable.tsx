@@ -3,6 +3,8 @@ import { Form, Button, Input, Space } from 'antd'
 import { LicenseType, defaultData } from './testData'
 import type { ColumnsState, ProColumns, ActionType } from '@ant-design/pro-components';
 import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
+import en_US from 'antd/es/calendar/locale/en_US';
+// import "moment/dist/locale/en_US"
 
 const waitTime = (time: number = 100) => {
     return new Promise((resolve) => {
@@ -17,18 +19,7 @@ const LicenseTable = () => {
     const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([])
     const [dataSource, setDataSource] = useState<readonly LicenseType[]>([])
     const [form] = Form.useForm()
-    const [columnsStateMap, setColumnsStateMap] = useState<Record<string, ColumnsState>>({
-        desc: {
-            show: false,
-        },
-        createAt: {
-            show: false
-        },
-        updateAt: {
-            show: false
-        }
 
-    })
     const columns: ProColumns<LicenseType>[] = [
         {
             title: 'ID',
@@ -84,7 +75,7 @@ const LicenseTable = () => {
             dataIndex: 'micron_id',
             key: 'micron_id'
         }, {
-            title: 'Serial Number',
+            title: 'Serial_Number',
             dataIndex: 'serial_number',
             key: 'serial_number'
         }, {
@@ -102,24 +93,27 @@ const LicenseTable = () => {
         }, {
             title: 'Is Expired',
             dataIndex: 'is_expired',
-            key: 'is_expired'
+            key: 'is_expired',
+            readonly: true
         }, {
-            title: 'Expiration_date',
+            title: 'Expiration_Date',
             dataIndex: 'expiration_date',
             key: 'expiration_date',
             valueType: 'date'
         }, {
-            title: 'Created Time',
+            title: 'Created_Time',
             dataIndex: 'createdAt',
             key: 'createdAt',
             valueType: 'date',
-            hideInSearch: true
+            hideInSearch: true,
+            readonly: true
         }, {
-            title: "Last Updated Time",
+            title: "Last_Updated_Time",
             dataIndex: "updatedAt",
             key: "updatedAt",
             valueType: 'date',
-            hideInSearch: true
+            hideInSearch: true,
+            readonly: true
         }, {
             title: "Action",
             key: 'option',
@@ -154,41 +148,62 @@ const LicenseTable = () => {
                     Reset
                 </Button>
             </Space>
-            <EditableProTable<LicenseType>
-                rowKey="id"
-                scroll={{
-                    x: 960,
-                }}
-                actionRef={actionRef}
-                headerTitle="License Record"
-                maxLength={5}
-                recordCreatorProps={false}
-                columns={columns}
-                request={async () => ({
-                    data: defaultData,
-                    total: 3,
-                    success: true,
-                })}
-                value={dataSource}
-                onChange={setDataSource}
-                columnsState={{
-                    value: columnsStateMap,
-                    onChange: setColumnsStateMap,
-                }}
-                options={{ search: true }}
-                dateFormatter="string"
-                pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30'] }}
-                editable={{
-                    form,
-                    editableKeys,
-                    onSave: async () => {
-                        await waitTime(2000);
-                    },
-                    onChange: setEditableRowKeys,
-                    actionRender: (row, config, dom) => [dom.save, dom.cancel],
-                }}
-            />
-        </>
-    )
+                <EditableProTable<LicenseType>
+                    locale={en_US}
+                    rowKey="id"
+                    scroll={{
+                        x: 960,
+                    }}
+                    actionRef={actionRef}
+                    headerTitle="License Record"
+                    maxLength={5}
+                    recordCreatorProps={false}
+                    columns={columns}
+                    request={async () => ({
+                        data: defaultData,
+                        total: 3,
+                        success: true,
+                    })}
+                    value={dataSource}
+                    onChange={setDataSource}
+                    columnsState={{
+                        value: {
+                            desc: {
+                                show: false
+                            },
+                            createdAt: {
+                                show: false
+                            },
+                            updatedAt: {
+                                show: false
+                            }
+                        },
+                        // onChange: setColumnsStateMap,
+                    }}
+                    options={{
+                        search: true,
+                        reload: true,
+                        density: false
+                    }}
+                    dateFormatter="string"
+                    pagination={{ 
+                        defaultPageSize: 10,
+                        current: 1,
+                        showTotal: (total) => `${total} items total`, 
+                        showSizeChanger: true, 
+                        pageSizeOptions: ['10', '20', '30'] 
+                    }}
+                    editable={{
+                        form,
+                        editableKeys,
+                        onSave: async () => {
+                            await waitTime(2000);
+                        },
+                        onChange: setEditableRowKeys,
+                        actionRender: (row, config, dom) => [dom.save, dom.cancel],
+                    }}
+                />
+            </>
+            )
 }
-export default LicenseTable;
+            export default LicenseTable;
