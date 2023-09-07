@@ -2,9 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Form, Button, Input, Space } from 'antd'
 import { LicenseType, defaultData } from './testData'
 import type { ColumnsState, ProColumns, ActionType } from '@ant-design/pro-components';
-import { EditableProTable, ProCard, ProFormField, ProFormRadio } from '@ant-design/pro-components';
-import en_US from 'antd/es/calendar/locale/en_US';
-// import "moment/dist/locale/en_US"
+import { EditableProTable, TableDropdown } from '@ant-design/pro-components';
 
 const waitTime = (time: number = 100) => {
     return new Promise((resolve) => {
@@ -25,67 +23,49 @@ const LicenseTable = () => {
             title: 'ID',
             dataIndex: 'id',
             readonly: true,
-            width: '5%'
+            width: '5%',
+            sorter: true
         }, {
             title: 'Region',
             dataIndex: 'region',
+            disable: true,
             filters: true,
             onFilter: true,
             valueType: 'select',
-            request: async () => [
-                {
-                    value: 0,
-                    label: 'Japan',
-                },
-                {
-                    value: 1,
-                    label: 'Europe',
-                },
-                {
-                    value: 2,
-                    label: 'NA',
-                },
-            ]
+            valueEnum: {
+                0: { text: 'Japan' },
+                1: { text: 'Europe' },
+                2: { text: 'North America' },
+                3: { text: 'Asia Pacific' }
+            }
         }, {
             title: 'System',
             dataIndex: 'system',
+            disable: true,
             filters: true,
             onFilter: true,
             valueType: 'select',
-            request: async () => [
-                {
-                    value: 'crm',
-                    label: 'CRM',
-                },
-                {
-                    value: 'erp',
-                    label: 'ERP',
-                },
-                {
-                    value: 'email',
-                    label: 'Email',
-                },
-            ]
+            valueEnum: {
+                0: { text: 'HVM2' },
+                1: { text: 'HVM3' },
+                2: { text: 'ES2' },
+                3: { text: 'ES3' }
+            }
         }, {
             title: "AAI ID",
             dataIndex: 'aai_id',
-            key: 'aai_id'
         }, {
-            title: 'Micron ID',
-            dataIndex: 'micron_id',
-            key: 'micron_id'
+            title: 'Customer ID',
+            dataIndex: 'customer_id',
         }, {
-            title: 'Serial_Number',
+            title: 'S/N',
             dataIndex: 'serial_number',
-            key: 'serial_number'
         }, {
             title: 'UUID',
             dataIndex: 'uuid',
-            key: 'uuid'
         }, {
             title: 'License Key',
             dataIndex: 'license_key',
-            key: 'license_key',
             hideInSetting: true
         }, {
             title: 'Description',
@@ -93,27 +73,39 @@ const LicenseTable = () => {
         }, {
             title: 'Is Expired',
             dataIndex: 'is_expired',
-            key: 'is_expired',
-            readonly: true
+            readonly: true,
+            valueType: 'select',
+            valueEnum: {
+                true: { text: 'Yes' },
+                false: { text: 'No' },
+            }
+        }, {
+            title: 'Is Permanent',
+            dataIndex: 'is_permanent',
+            valueType: 'select',
+            valueEnum: {
+                true: { text: 'Yes' },
+                false: { text: 'No' },
+            }
         }, {
             title: 'Expiration_Date',
             dataIndex: 'expiration_date',
-            key: 'expiration_date',
-            valueType: 'date'
+            valueType: 'date',
+            sorter: true
         }, {
             title: 'Created_Time',
             dataIndex: 'createdAt',
-            key: 'createdAt',
             valueType: 'date',
             hideInSearch: true,
-            readonly: true
+            readonly: true,
+            sorter: true
         }, {
             title: "Last_Updated_Time",
             dataIndex: "updatedAt",
-            key: "updatedAt",
             valueType: 'date',
             hideInSearch: true,
-            readonly: true
+            readonly: true,
+            sorter: true
         }, {
             title: "Action",
             key: 'option',
@@ -121,89 +113,94 @@ const LicenseTable = () => {
             valueType: "option",
             render: (text, record, _, action) => [
                 <a key="editable" onClick={() => { action?.startEditable?.(record.id) }}>Edit</a>,
-                <a key="delete" onClick={() => { setDataSource(defaultData.filter((item) => item.id !== record.id)) }}>Delete</a>
+                <TableDropdown
+                    key="actionGroup"
+                    onSelect={() => action?.reload}
+                    menus={[
+                        { key: 'copy', name: "Copy" },
+                        {
+                            key: 'delete',
+                            name: "Delete",
+                            onClick: () => { setDataSource(defaultData.filter((item) => item.id !== record.id)) }
+                        }
+                    ]}
+/>
             ]
         }
     ]
-    return (
-        <>
-            <Space>
+return (
+    <>
+        <EditableProTable<LicenseType>
+            rowKey="id"
+            scroll={{
+                x: 960,
+            }}
+            actionRef={actionRef}
+            headerTitle="License Record"
+            maxLength={5}
+            // recordCreatorProps={false}
+            columns={columns}
+            request={async () => ({
+                data: defaultData,
+                total: 3,
+                success: true,
+            })}
+            value={dataSource}
+            onChange={setDataSource}
+            columnsState={{
+                persistenceKey: "pro-table-single-demos",
+                value: {
+                    desc: {
+                        show: false
+                    },
+                    createdAt: {
+                        show: false
+                    },
+                    updatedAt: {
+                        show: false
+                    }
+                },
+                // onChange: setColumnsStateMap,
+            }}
+            options={{
+                search: true,
+                reload: true,
+                density: false,
+                setting: {
+                    listsHeight: 600,
+                }
+            }}
+            dateFormatter="string"
+            pagination={{
+                defaultPageSize: 10,
+                // showTotal: (total) => `${total} pages in total`, 
+                showSizeChanger: true,
+                showQuickJumper: true,
+                pageSizeOptions: ['10', '20', '30'],
+                // onChange: (page) => console.log(page)
+            }}
+            editable={{
+                form,
+                editableKeys,
+                onSave: async () => {
+                    await waitTime(2000);
+                },
+                onChange: setEditableRowKeys,
+                actionRender: (row, config, dom) => [dom.save, dom.cancel],
+            }}
+            toolBarRender={() => [
                 <Button
                     type="primary"
                     onClick={() => {
                         actionRef.current?.addEditRecord?.({
                             id: (Math.random() * 1000000).toFixed(0),
-                            title: '新的一行',
+                            title: 'Add',
                         });
                     }}
-                >
-                    Add
-                </Button>
-                <Button
-                    key="rest"
-                    onClick={() => {
-                        form.resetFields();
-                    }}
-                >
-                    Reset
-                </Button>
-            </Space>
-                <EditableProTable<LicenseType>
-                    locale={en_US}
-                    rowKey="id"
-                    scroll={{
-                        x: 960,
-                    }}
-                    actionRef={actionRef}
-                    headerTitle="License Record"
-                    maxLength={5}
-                    recordCreatorProps={false}
-                    columns={columns}
-                    request={async () => ({
-                        data: defaultData,
-                        total: 3,
-                        success: true,
-                    })}
-                    value={dataSource}
-                    onChange={setDataSource}
-                    columnsState={{
-                        value: {
-                            desc: {
-                                show: false
-                            },
-                            createdAt: {
-                                show: false
-                            },
-                            updatedAt: {
-                                show: false
-                            }
-                        },
-                        // onChange: setColumnsStateMap,
-                    }}
-                    options={{
-                        search: true,
-                        reload: true,
-                        density: false
-                    }}
-                    dateFormatter="string"
-                    pagination={{ 
-                        defaultPageSize: 10,
-                        current: 1,
-                        showTotal: (total) => `${total} items total`, 
-                        showSizeChanger: true, 
-                        pageSizeOptions: ['10', '20', '30'] 
-                    }}
-                    editable={{
-                        form,
-                        editableKeys,
-                        onSave: async () => {
-                            await waitTime(2000);
-                        },
-                        onChange: setEditableRowKeys,
-                        actionRender: (row, config, dom) => [dom.save, dom.cancel],
-                    }}
-                />
-            </>
-            )
+                >Add</Button>
+            ]}
+        />
+    </>
+)
 }
-            export default LicenseTable;
+export default LicenseTable;
