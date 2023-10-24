@@ -1,20 +1,23 @@
-interface CupProps {
-  guest: number
-}
-const Cup = ({ guest }: CupProps) => {
+'use client'
+
+import { useState } from "react"
+
+const Btn = (props) => {
   return (
-    <div>Tea cup for guest #{guest}</div>
+    <button className="border-2 border-blue-500 rounded-md hover:border-red-500">{props.msg}</button>
   )
 }
-
 
 export default function App() {
+  const [clickedButton, setClickedButton] = useState(null);
+  const handleButtonClick = (msg) => {
+    setClickedButton(msg)
+  }
   return (
     <>
-      <h1 className="text-1xl font-bold underline">halo</h1>
-      <Cup guest={1} />
-      <Cup guest={2} />
-      <Cup guest={3} />
-    </>
-  )
+      <Btn msg="next" onClick={() => handleButtonClick('next')} />
+      <Btn msg="next2" onClick={() => handleButtonClick('next2')} />
+      <p>result: {clickedButton}</p>
+    </>)
 }
+
