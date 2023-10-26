@@ -1,23 +1,15 @@
 'use client'
 
-import { useState } from "react"
-
-const Btn = (props) => {
-  return (
-    <button className="border-2 border-blue-500 rounded-md hover:border-red-500">{props.msg}</button>
-  )
-}
+import BtnDemo from "./BtnDemo"
+import PropagationDemo from "./PropagationDemo"
+import Demo from "./Demo"
+import { createRoot } from "react-dom/client"
 
 export default function App() {
-  const [clickedButton, setClickedButton] = useState(null);
-  const handleButtonClick = (msg) => {
-    setClickedButton(msg)
-  }
   return (
     <>
-      <Btn msg="next" onClick={() => handleButtonClick('next')} />
-      <Btn msg="next2" onClick={() => handleButtonClick('next2')} />
-      <p>result: {clickedButton}</p>
+      {/* <BtnDemo /> */}
+      {/* <PropagationDemo /> */}
+      <Demo />
     </>)
 }
-
