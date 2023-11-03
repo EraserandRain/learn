@@ -1,5 +1,5 @@
-export default function Demo(){
+export default function Demo() {
     return (
-        <p>demo</p>
+        <p>Demo</p>
     )
-}
+};
