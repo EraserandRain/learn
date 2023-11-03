@@ -4,6 +4,7 @@ import BtnDemo from "./BtnDemo"
 import PropagationDemo from "./PropagationDemo"
 import ImmerDemo from "./ImmerDemo"
 import NameDemo from "./NameDemo"
+import Demo from "./Demo"
 import { createRoot } from "react-dom/client"
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
       {/* <BtnDemo /> */}
       {/* <PropagationDemo /> */}
       {/* <ImmerDemo /> */}
-      <NameDemo />
+      {/* <NameDemo /> */}
+      <Demo />
     </>)
 }
