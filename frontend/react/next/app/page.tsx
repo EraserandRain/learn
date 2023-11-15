@@ -5,6 +5,7 @@ import PropagationDemo from "./PropagationDemo"
 import ImmerDemo from "./ImmerDemo"
 import NameDemo from "./NameDemo"
 import ShareStateDemo from "./ShareStateDemo"
+import ReducerDemo from "./ReducerDemo"
 import Demo from "./Demo"
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       {/* <ImmerDemo /> */}
       {/* <NameDemo /> */}
       {/* <ShareStateDemo /> */}
+      <ReducerDemo />
       <Demo />
     </>)
 }
