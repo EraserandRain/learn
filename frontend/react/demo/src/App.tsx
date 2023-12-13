@@ -10,6 +10,23 @@ const data = [
     { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
 ]
 
+interface Product {
+    name: string;
+    stocked: boolean;
+    price: number;
+    category: string;
+    // Add other properties as needed
+}
+
+interface ProductTableProps {
+    products: Product[];
+    filterText: string;
+    inStockOnly: boolean;
+}
+interface ProductCategoryRowProps {
+    category: string
+}
+
 const FilterableProductTable = ({ products }) => {
     const [filterText, setFilterText] = useState<string>('')
     const [inStockOnly, setInStockOnly] = useState<boolean>(false)
@@ -50,10 +67,6 @@ const SearchBar = ({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyC
     )
 }
 
-interface ProductCategoryRowProps {
-    category: string
-}
-
 const ProductCategoryRow = ({ category }: ProductCategoryRowProps) => {
     return (
         <tr>
@@ -62,22 +75,21 @@ const ProductCategoryRow = ({ category }: ProductCategoryRowProps) => {
     )
 }
 
-const ProductRow = ({ product }) => {
-    const name = product.stocked ? product.name :
-        <span style={{ color: 'red' }}>{product.name}</span>
+const ProductRow: React.FC<{ product: Product }> = ({ product }) => {
+    const name = product.stocked ? product.name : <span style={{ color: 'red' }}>{product.name}</span>;
     return (
         <tr>
             <td>{name}</td>
             <td>{product.price}</td>
         </tr>
-    )
-}
+    );
+};
 
-const ProductTable = ({ products, filterText, inStockOnly }) => {
+const ProductTable: React.FC<ProductTableProps> = ({ products, filterText, inStockOnly }) => {
     const rows: any = []
-    let lastCategory = null
+    let lastCategory: null = null
 
-    products.forEach((product) => {
+    products.forEach((product: any) => {
         if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
             return
         }
