@@ -1,33 +1,39 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
-
-const data = [
-    { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
-    { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
-    { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
-    { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
-    { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
-    { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
-]
 
 interface Product {
     name: string;
     stocked: boolean;
     price: number;
     category: string;
-    // Add other properties as needed
 }
-
-interface ProductTableProps {
-    products: Product[];
+interface CommonFilterState {
     filterText: string;
     inStockOnly: boolean;
 }
+interface CommonTableProps {
+    products: Product[];
+}
+interface ProductTableProps extends CommonTableProps, CommonFilterState { }
+interface FilterableProductTableProps extends CommonTableProps { }
 interface ProductCategoryRowProps {
     category: string
 }
+interface SearchBarProps extends CommonFilterState {
+    onFilterTextChange: (text: string) => void;
+    onInStockOnlyChange: (inStock: boolean) => void;
+}
 
-const FilterableProductTable = ({ products }) => {
+const data: Product[] = [
+    { category: "Fruits", price: 1, stocked: true, name: "Apple" },
+    { category: "Fruits", price: 1, stocked: true, name: "Dragonfruit" },
+    { category: "Fruits", price: 2, stocked: false, name: "Passionfruit" },
+    { category: "Vegetables", price: 2, stocked: true, name: "Spinach" },
+    { category: "Vegetables", price: 4, stocked: false, name: "Pumpkin" },
+    { category: "Vegetables", price: 1, stocked: true, name: "Peas" }
+]
+
+const FilterableProductTable: React.FC<FilterableProductTableProps> = ({ products }) => {
     const [filterText, setFilterText] = useState<string>('')
     const [inStockOnly, setInStockOnly] = useState<boolean>(false)
     return (
@@ -45,7 +51,7 @@ const FilterableProductTable = ({ products }) => {
     )
 }
 
-const SearchBar = ({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange }) => {
     return (
         <form>
             <input
@@ -76,20 +82,21 @@ const ProductCategoryRow = ({ category }: ProductCategoryRowProps) => {
 }
 
 const ProductRow: React.FC<{ product: Product }> = ({ product }) => {
-    const name = product.stocked ? product.name : <span style={{ color: 'red' }}>{product.name}</span>;
+    const name = product.stocked ? product.name : <span style={{ color: 'red' }}>{product.name}</span>
+    const formattedPrice = `$${product.price}`
     return (
         <tr>
             <td>{name}</td>
-            <td>{product.price}</td>
+            <td>{formattedPrice}</td>
         </tr>
     );
 };
 
 const ProductTable: React.FC<ProductTableProps> = ({ products, filterText, inStockOnly }) => {
-    const rows: any = []
-    let lastCategory: null = null
+    const rows: React.ReactNode[] = []
+    let lastCategory: string | null = null
 
-    products.forEach((product: any) => {
+    products.forEach((product: Product) => {
         if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
             return
         }
