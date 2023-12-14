@@ -20,3 +20,4 @@ jobs:
       with:
         branch: gh-pages
         folder: ./frontend/react/product_stock_list
+        clean: true
