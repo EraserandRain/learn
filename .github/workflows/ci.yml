@@ -17,6 +17,8 @@ jobs:
 
     - name: Build
       run: |
+        cd frontend/react/product_stock_list
+        npm add -g pnpm
         pnpm install
         pnpm build
         touch out/.nojekyll
