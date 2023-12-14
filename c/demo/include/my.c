@@ -1,4 +1,0 @@
-char *halo()
-{
-    return "halo";
-}

@@ -1,5 +1,0 @@
-{
-  "paths": ["./src/**/*.[ch]", "./include/**/*.[ch]", "./tests/unittest/test/*.[ch]"],
-  "filterPre": [".*"],
-  "filterPost": ["./src/build/**", "./tests/unittest/build/**", "./tests/unittest/generated"]
-}

@@ -1,9 +1,0 @@
----
-- name: Update DNS
-  hosts: worker
-  gather_facts: false
-  connection: local
-  become: true
-  tasks:
-    - import_tasks: init
-        
