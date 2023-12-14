@@ -8,13 +8,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
+
       - name: Build
         run: |
           npm add -g pnpm
           cd frontend/react/product_stock_list
           pnpm i
           pnpm build
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
