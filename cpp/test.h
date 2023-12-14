@@ -1,0 +1,1 @@
+#define TRIAL_KEY 1330

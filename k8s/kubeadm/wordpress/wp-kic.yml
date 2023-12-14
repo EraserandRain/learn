@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-kic-dep
+  namespace: nginx-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wp-kic-dep
+  template:
+    metadata:
+      labels:
+        app: wp-kic-dep
+    spec:
+      serviceAccountName: nginx-ingress
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+      - name: wp-kic-dep
+        image: nginx/nginx-ingress:2.2-alpine
+        args:
+          - -ingress-class=wp-ink
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

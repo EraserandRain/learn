@@ -1,0 +1,12 @@
+- name: Test
+  hosts: worker
+  gather_facts: false
+  tasks:
+    - name: Install Pyenv
+      shell: |
+        set -o pipefail
+        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+      args:
+        executable: /bin/bash
+        creates: /home/{{ lookup('env', 'USER') }}/.pyenv
+      changed_when: false

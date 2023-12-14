@@ -1,0 +1,10 @@
+---
+# charts/subchart/templates/subchart-cm/yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-subchart-configmap
+data:
+  dessert: {{ .Values.dessert }}
+  salad: {{ .Values.global.salad }}
+  {{- include "mychart.app" . | indent 2 }}

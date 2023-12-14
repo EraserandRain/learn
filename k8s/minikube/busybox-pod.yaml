@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  labels:
+    name: busybox
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    env:
+      - name: OS
+        value: ubuntu
+      - name: msg
+        value: hello world
+    command:
+      - "/bin/echo"
+      - "$(OS) $(msg)"
+      

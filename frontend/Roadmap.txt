@@ -1,0 +1,14 @@
+-- HTML+CSS
+-- Frontend Program Languages
+-- Tools 
+	- Package Managers
+	- Build Tools
+	- Frontend Framework
+	- Server Side Rendering
+		- React -- Remix Next.js
+		- Vue -- Nuxt.js
+		- Angular -- Universal
+		- Svelte -- Svelte Kit
+-- Mobile & Desktop
+	- Mobile Applications
+	- Desktop Applications

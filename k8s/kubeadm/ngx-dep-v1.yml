@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngx-dep
+  annotations:
+    kubernetes.io/change-cause: v1, ngx=1.21
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: ngx-dep
+  template:
+    metadata:
+      labels:
+        app: ngx-dep
+    spec:
+      volumes:
+      - name: ngx-conf-vol
+        configMap:
+          name: ngx-conf
+
+      containers:
+      - name: ngx-dep
+        image: nginx:1.21-alpine
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: ngx-conf-vol

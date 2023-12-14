@@ -1,0 +1,13 @@
+---
+# mychart/values.yaml
+course: kubernetes
+courselist:
+  - kubernetes
+  - python
+  - golang
+
+subchart:
+  dessert: ice cream
+
+global:
+  salad: caesar

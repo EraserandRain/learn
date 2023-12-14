@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: info
+data:
+  count: "10"
+  debug: "on"
+  greeting: |
+    hello k8s
+  path: "/etc/systemd"

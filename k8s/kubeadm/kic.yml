@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngx-kic-dep
+  namespace: nginx-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ngx-kic-dep
+  template:
+    metadata:
+      labels:
+        app: ngx-kic-dep
+    spec:
+      containers:
+      - name: ngx-kic-dep
+        image: nginx/nginx-ingress:2.2-alpine
+        args: 
+          - -ingress-class=ngx-ink
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
