@@ -9,8 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          submodules: true
-          fetch-depth: 0
       - name: Build
         run: |
           npm add -g pnpm
