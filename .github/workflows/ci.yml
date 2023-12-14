@@ -18,8 +18,9 @@ jobs:
           pnpm build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@master
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: frontend/react/product_stock_list/dist
