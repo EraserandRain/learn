@@ -26,3 +26,4 @@ jobs:
           folder: frontend/react/product_stock_list/dist
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
