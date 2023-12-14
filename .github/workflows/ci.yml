@@ -10,20 +10,17 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Install pnpm 🔧
-        run: |
-          npm install -g pnpm
-
       - name: Install and Build 🔧
         run: |
           cd frontend/react/product_stock_list
+          npm install -g pnpm
           pnpm i
           pnpm build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: frontend/react/product_stock_list/dist
+        # with:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
+          FOLDER: frontend/react/product_stock_list/dist
