@@ -11,11 +11,12 @@ interface CommonFilterState {
     filterText: string;
     inStockOnly: boolean;
 }
-interface CommonTableProps {
+interface ProductTableProps extends CommonFilterState {
     products: Product[];
 }
-interface ProductTableProps extends CommonTableProps, CommonFilterState { }
-interface FilterableProductTableProps extends CommonTableProps { }
+interface FilterableProductTableProps {
+    products: Product[];
+}
 interface ProductCategoryRowProps {
     category: string
 }
