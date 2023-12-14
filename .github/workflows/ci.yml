@@ -3,24 +3,24 @@ on: [push]
 permissions:
   contents: write
 jobs:
-  build-and-deploy:
-    concurrency: ci-${{ github.ref }}
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Install and Build 🔧
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Build
         run: |
+          npm add -g pnpm
           cd frontend/react/product_stock_list
-          npm install -g pnpm
           pnpm i
           pnpm build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: .
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/react/product_stock_list
+          cname: eraserandrain.github.io/product_stock_list
+          enable_jekyll: true
