@@ -12,6 +12,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
+          cd frontend/react/product_stock_list
           npm ci
           npm run build
 
