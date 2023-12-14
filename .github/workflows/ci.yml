@@ -10,11 +10,15 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
+      - name: Install pnpm 🔧
+        run: |
+          npm install -g pnpm
+
       - name: Install and Build 🔧
         run: |
           cd frontend/react/product_stock_list
-          npm ci
-          npm run build
+          pnpm i
+          pnpm build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
