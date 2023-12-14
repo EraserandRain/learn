@@ -40,5 +40,8 @@
     "files.associations": {
         "stdio.h": "c"
     },
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/ci.yml"
+    ]
 }
