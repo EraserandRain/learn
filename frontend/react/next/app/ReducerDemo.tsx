@@ -1,7 +1,14 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, Reducer } from 'react';
 
 // NOTE: useReducer
-const reducer = (state, action) => {
+interface State {
+    count: number
+}
+interface Action {
+    type: 'inc' | 'dec'
+}
+
+const reducer: Reducer<State,Action> = (state, action) => {
     switch (action.type) {
         case 'inc':
             return { count: state.count + 1 }
