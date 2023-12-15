@@ -58,14 +58,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /tmp/docker
-          key: ${{ runner.os }}-docker-${{ hashFiles('builder.Dockerfile') }}
+          key: ${{ runner.os }}-docker-${{ hashFiles('Dockerfile') }}
        
       - name: Build docker builder-image
         if: steps.cache-docker.outputs.cache-hit != 'true'
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: builder.Dockerfile
+          file: c/cproject/Dockerfile
           tags: cproject-builder:latest
           outputs: type=docker,dest=/tmp/docker/${{ runner.os }}-builder-image.tar
 
@@ -81,7 +81,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /tmp/docker
-          key: ${{ runner.os }}-docker-${{ hashFiles('builder.Dockerfile') }}
+          key: ${{ runner.os }}-docker-${{ hashFiles('Dockerfile') }}
       
       - name: Load image
         run: |
