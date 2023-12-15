@@ -91,6 +91,8 @@ jobs:
       - name: Build library
         run: |
           cd c/cproject
+          ls -l
+          pwd
           docker run \
             --rm \
             --workdir /builder/mnt \
