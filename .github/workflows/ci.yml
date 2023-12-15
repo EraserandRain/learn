@@ -91,12 +91,10 @@ jobs:
       - name: Build library
         run: |
           cd c/cproject
-          ls -l
-          pwd
           docker run \
             --rm \
             --workdir /builder/mnt \
-            -v ${{ github.workspace }}:/builder/mnt \
+            -v ${{ github.workspace }}/c/cproject:/builder/mnt \
             cproject-builder:latest \
             /bin/bash -c "rm -rf build; cmake -B build; cmake --build build"
       
