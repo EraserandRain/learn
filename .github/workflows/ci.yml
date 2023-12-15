@@ -90,6 +90,7 @@ jobs:
       
       - name: Build library
         run: |
+          cd c/cproject
           docker run \
             --rm \
             --workdir /builder/mnt \
@@ -99,6 +100,7 @@ jobs:
       
       - name: Test library
         run: |
+          cd c/cproject
           docker run \
             --rm \
             --workdir /builder/mnt/tests/unittest \
