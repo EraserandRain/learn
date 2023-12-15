@@ -15,7 +15,10 @@ const config: Config = {
       },
       colors: {
         white: '#fff'
-      }
+      },
+      fontFamily: {
+        sans: ['sans-serif']
+      },
     },
   },
   plugins: [],

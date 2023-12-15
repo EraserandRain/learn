@@ -16,7 +16,7 @@ export default function App() {
       {/* <ImmerDemo /> */}
       {/* <NameDemo /> */}
       {/* <ShareStateDemo /> */}
-      <ReducerDemo />
+      {/* <ReducerDemo /> */}
       <Demo />
     </>)
 }
