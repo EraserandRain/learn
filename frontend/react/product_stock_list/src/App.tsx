@@ -84,7 +84,7 @@ const ProductCategoryRow = ({ category }: ProductCategoryRowProps) => {
 
 const ProductRow: React.FC<{ product: Product }> = ({ product }) => {
     const name = product.stocked ? product.name : <span style={{ color: 'red' }}>{product.name}</span>
-    const formattedPrice = `$${product.price.toFixed(2)}`
+    const formattedPrice = `$${product.price}`
     return (
         <tr>
             <td>{name}</td>
