@@ -1,11 +1,20 @@
-const Section = ({ children }) => {
+import React, { ReactNode } from 'react';
+interface SectionProps {
+    children: ReactNode
+}
+interface HeadingProps {
+    level: number
+    children: ReactNode
+}
+
+const Section: React.FC<SectionProps> = ({ children }) => {
     return (
         <section className="section">
             {children}
         </section>
     )
 }
-const Heading = ({ level, children }) => {
+const Heading: React.FC<HeadingProps> = ({ level, children }) => {
     switch (level) {
         case 1:
             return <h1>{children}</h1>

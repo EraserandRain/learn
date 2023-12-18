@@ -1,16 +1,20 @@
-import { useState } from "react"
+import React, { MouseEventHandler, useState } from "react"
+interface BtnProps {
+  msg: string
+  onClick: MouseEventHandler<HTMLButtonElement>
+}
 
-const Btn = (props) => {
+const Btn: React.FC<BtnProps> = ({ msg, onClick }) => {
   return (
     <button
       className="border-2 border-blue-500 rounded-md hover:border-red-500"
-      onClick={props.onClick} >{props.msg}</button>
+      onClick={onClick} >{msg}</button>
   )
 }
 
 export default function BtnDemo() {
-  const [clickedButton, setClickedButton] = useState(null);
-  const handleButtonClick = (msg) => {
+  const [clickedButton, setClickedButton] = useState<string | null>(null);
+  const handleButtonClick = (msg: string) => {
     setClickedButton(msg)
   }
   return (

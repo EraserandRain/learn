@@ -1,13 +1,8 @@
-const Main = () => {
-    return (
-        <div onClick={() => alert('Main Clicked!')}>
-            <Play />
-            <Upload />
-        </div>
-    )
+interface ButtonProps {
+    msg: string
 }
 
-const Button = ({msg}) => {
+const Button: React.FC<ButtonProps> = ({ msg }) => {
     return (
         <button
             className="border-2 rounded-md"
@@ -30,10 +25,13 @@ const Upload = () => {
     )
 }
 
-export default function Demo() {
+export default function PropagationDemo() {
     return (
         <>
-            <Main />
+            <div onClick={() => alert('Main Clicked!')}>
+                <Play />
+                <Upload />
+            </div>
         </>
     )
 }
