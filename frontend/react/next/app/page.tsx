@@ -7,6 +7,7 @@ import NameDemo from "./NameDemo"
 import ShareStateDemo from "./ShareStateDemo"
 import ReducerDemo from "./ReducerDemo"
 import ContextDemo from "./ContextDemo"
+import ReducerContextDemo from "./ReducerContextDemo"
 import Demo from "./Demo"
 
 export default function App() {
@@ -18,7 +19,8 @@ export default function App() {
       {/* <NameDemo /> */}
       {/* <ShareStateDemo /> */}
       {/* <ReducerDemo /> */}
-      <ContextDemo />
-      <Demo />
+      {/* <ContextDemo /> */}
+      <ReducerContextDemo />
+      {/* <Demo /> */}
     </>)
 }

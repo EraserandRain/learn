@@ -1,20 +1,26 @@
-import { ReactNode } from 'react';
+import { ReactNode, createContext, useContext } from 'react';
 interface SectionProps {
+    level?: number
     children: ReactNode
 }
 interface HeadingProps {
-    level: number
     children: ReactNode
 }
 
+const LevelContext = createContext(1)
+
 const Section: React.FC<SectionProps> = ({ children }) => {
+    const level = useContext(LevelContext)
     return (
         <section className="section">
-            {children}
+            <LevelContext.Provider value={level + 1}>
+                {children}
+            </LevelContext.Provider>
         </section>
     )
 }
-const Heading: React.FC<HeadingProps> = ({ level, children }) => {
+const Heading: React.FC<HeadingProps> = ({ children }) => {
+    const level = useContext(LevelContext)
     switch (level) {
         case 1:
             return <h1>{children}</h1>
@@ -29,33 +35,26 @@ const Heading: React.FC<HeadingProps> = ({ level, children }) => {
         case 6:
             return <h6>{children}</h6>
         default:
-            throw Error('Unknown level ' + level)
+            throw Error('Unknown level')
     }
 }
 
 export default function ContextDemo() {
     return (
         <Section>
-            <Heading level={1}>ContextDemo</Heading>
+            <Heading>ContextDemo</Heading>
             <Section>
-                <Heading level={2}>Heading</Heading>
-                <Heading level={2}>Heading</Heading>
-                <Heading level={2}>Heading</Heading>
+                <Heading>Heading</Heading>
+                <Heading>Heading</Heading>
                 <Section>
-                    <Heading level={3}>Sub-heading</Heading>
-                    <Heading level={3}>Sub-heading</Heading>
-                    <Heading level={3}>Sub-heading</Heading>
+                    <Heading>Sub-heading</Heading>
+                    <Heading>Sub-heading</Heading>
                     <Section>
-                        <Heading level={4}>Sub-sub-heading</Heading>
-                        <Heading level={4}>Sub-sub-heading</Heading>
-                        <Heading level={4}>Sub-sub-heading</Heading>
+                        <Heading>Sub-sub-heading</Heading>
+                        <Heading>Sub-sub-heading</Heading>
                     </Section>
                 </Section>
             </Section>
-
-            <Heading level={5}>Sub-sub-sub-heading</Heading>
-            <Heading level={6}>Sub-sub-sub-sub-heading</Heading>
         </Section>
     )
 }
-
