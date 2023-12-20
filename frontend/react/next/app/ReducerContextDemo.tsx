@@ -1,22 +1,9 @@
-import React, { useReducer, useState } from 'react';
+import React, { ReactNode, createContext, useContext, useReducer, useState } from 'react';
 
 interface Task {
     id: number;
     text: string;
     done: boolean;
-}
-interface TaskProps {
-    task: Task;
-    onChange: (task: Task) => void;
-    onDelete: (taskId: number) => void;
-}
-interface AddTaskProps {
-    onAddTask: (text: string) => void
-}
-interface TaskListProps {
-    tasks: Task[]
-    onChangeTask: (task: Task) => void
-    onDeleteTask: (taskId: number) => void
 }
 interface Action {
     type: string
@@ -24,71 +11,110 @@ interface Action {
     text?: string
     task?: Task
 }
-
-const initialTasks = [
+interface TasksProviderProps {
+    children: ReactNode
+}
+const initialTasks: Task[] = [
     { id: 0, text: 'Visit Kafka Museum', done: true },
     { id: 1, text: 'Watch a puppet show', done: false },
     { id: 2, text: 'Lennon Wall pic', done: false },
 ];
 
-const Task: React.FC<TaskProps> = ({ task, onChange, onDelete }) => {
+const TasksContext = createContext<Task[] | null>(null)
+const TasksDispatchContext = createContext<React.Dispatch<Action> | null>(null)
+let nextId = 3
+
+const Task: React.FC<{ task: Task }> = ({ task }) => {
+    const [isEditing, setIsEditing] = useState(false)
+    const dispatch = useContext(TasksDispatchContext)
+    let taskContent = isEditing ? (
+        <>
+            <input
+                value={task.text}
+                onChange={e => {
+                    dispatch({
+                        type: 'changed',
+                        task: {
+                            ...task,
+                            text: e.target.value
+                        }
+                    })
+                }} />
+            <button onClick={() => setIsEditing(false)}>Save</button>
+        </>
+    ) : (
+        <>
+            {task.text}
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+        </>
+    )
     return (
-        <li>
+        <label>
             <input
                 type="checkbox"
                 checked={task.done}
-                onChange={() => onChange(task)}
+                onChange={(e) => {
+                    dispatch({
+                        type: 'changed',
+                        task: {
+                            ...task,
+                            done: e.target.checked
+                        }
+                    })
+                }}
             />
-            <span>{task.text}</span>
-            <button onClick={() => onDelete(task.id)}>Delete</button>
-        </li>
+            {taskContent}
+            <button onClick={() => {
+                dispatch({
+                    type: 'deleted',
+                    id: task.id
+                })
+            }}>Delete</button>
+        </label>
     );
 };
 
-const AddTask: React.FC<AddTaskProps> = ({ onAddTask }) => {
-    const [newTaskText, setNewTaskText] = useState('');
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTaskText(e.target.value);
-    };
-
-    const handleAddClick = () => {
-        if (newTaskText.trim() !== '') {
-            onAddTask(newTaskText);
-            setNewTaskText('');
-        }
-    };
+const AddTask = () => {
+    const [text, setText] = useState('');
+    const dispatch = useContext(TasksDispatchContext)
 
     return (
         <div>
             <input
                 type="text"
-                value={newTaskText}
-                onChange={handleInputChange}
+                value={text}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setText(e.target.value);
+                }}
                 placeholder="Add a new task"
             />
-            <button onClick={handleAddClick}>Add</button>
+            <button onClick={() => {
+                setText('')
+                dispatch({
+                    type: 'added',
+                    id: nextId++,
+                    text: text,
+                })
+            }}>Add</button>
         </div>
     );
 };
 
 
-const TaskList: React.FC<TaskListProps> = ({ tasks, onChangeTask, onDeleteTask }) => {
+const TaskList = () => {
+    const tasks = useContext(TasksContext)
     return (
         <ul>
-            {tasks.map((task) => (
-                <Task
-                    key={task.id}
-                    task={task}
-                    onChange={onChangeTask}
-                    onDelete={onDeleteTask}
-                />
+            {tasks?.map((task) => (
+                <li key={task.id}>
+                    <Task task={task} />
+                </li>
             ))}
         </ul>
     );
 };
 
-const tasksReducer: React.Reducer<Task[], Action> = ( tasks, action ) => {
+const tasksReducer: React.Reducer<Task[], Action> = (tasks, action) => {
     switch (action.type) {
         case 'added': {
             return [
@@ -112,41 +138,23 @@ const tasksReducer: React.Reducer<Task[], Action> = ( tasks, action ) => {
     }
 }
 
-export default function ReducerContextDemo() {
+const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
     const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
-
-    let nextId = 3
-    const handleAddTask = (text: string) => {
-        dispatch({
-            type: 'added',
-            id: nextId++,
-            text: text,
-        });
-    }
-
-    const handleChangeTask = (task: Task) => {
-        dispatch({
-            type: 'changed',
-            task: task,
-        });
-    }
-
-    const handleDeleteTask = (taskId: number) => {
-        dispatch({
-            type: 'deleted',
-            id: taskId,
-        });
-    }
-
     return (
-        <>
+        <TasksContext.Provider value={tasks}>
+            <TasksDispatchContext.Provider value={dispatch}>
+                {children}
+            </TasksDispatchContext.Provider>
+        </TasksContext.Provider>
+    )
+}
+
+export default function ReducerContextDemo() {
+    return (
+        <TasksProvider>
             <p>Prague itinerary</p>
-            <AddTask onAddTask={handleAddTask} />
-            <TaskList
-                tasks={tasks}
-                onChangeTask={handleChangeTask}
-                onDeleteTask={handleDeleteTask}
-            />
-        </>
+            <AddTask />
+            <TaskList />
+        </TasksProvider>
     );
 }
