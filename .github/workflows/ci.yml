@@ -41,22 +41,22 @@ jobs:
           pnpm install
           pnpm build
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: ${{ env.REACT_PAGE_PATH }}/out
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v3
-
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v2
+      # - name: Deploy
+      #   uses: JamesIves/github-pages-deploy-action@v4
       #   with:
-      #     path: "./${{ env.REACT_PAGE_PATH }}/out"
+      #     branch: gh-pages
+      #     folder: ${{ env.REACT_PAGE_PATH }}/out
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
 
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "./${{ env.REACT_PAGE_PATH }}/out"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
 
   cproject-docker-build:
     runs-on: ubuntu-latest
