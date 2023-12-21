@@ -1,7 +1,7 @@
 name: Actions CI
 env:
   CPROJECT_PATH: c/cproject
-  REACT_PRODUCT_PATH: frontend/react/product_stock_list
+  REACT_PAGE_PATH: frontend/react/next/
 on:
   push:
     branches:
@@ -9,7 +9,7 @@ on:
     paths:
       - .github/**
       - c/cproject/**
-      - frontend/react/product_stock_list/**
+      - frontend/react/next/**
   workflow_dispatch:
 permissions:
   contents: read
@@ -32,26 +32,31 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            ${{ env.REACT_PRODUCT_PATH }}
+            ${{ env.REACT_PAGE_PATH }}
 
       - name: Install packages and Build
         run: |
-          cd ${{ env.REACT_PRODUCT_PATH }}
+          cd ${{ env.REACT_PAGE_PATH }}
           npm add -g pnpm
           pnpm install
           pnpm build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: "./${{ env.REACT_PRODUCT_PATH }}/dist"
+          branch: gh-pages
+          folder: out
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v3
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v2
+      #   with:
+      #     path: "./${{ env.REACT_PAGE_PATH }}/out"
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v2
 
   cproject-docker-build:
     runs-on: ubuntu-latest
