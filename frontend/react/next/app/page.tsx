@@ -8,6 +8,7 @@ import ShareStateDemo from "./ShareStateDemo"
 import ReducerDemo from "./ReducerDemo"
 import ContextDemo from "./ContextDemo"
 import ReducerContextDemo from "./ReducerContextDemo"
+import RefDemo from "./RefDemo"
 import Demo from "./Demo"
 
 export default function App() {
@@ -20,7 +21,8 @@ export default function App() {
       {/* <ShareStateDemo /> */}
       {/* <ReducerDemo /> */}
       {/* <ContextDemo /> */}
-      <ReducerContextDemo />
+      {/* <ReducerContextDemo /> */}
+      <RefDemo />
       {/* <Demo /> */}
     </>)
 }
