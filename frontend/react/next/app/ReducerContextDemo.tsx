@@ -21,7 +21,7 @@ const initialTasks: Task[] = [
 ];
 
 const TasksContext = createContext<Task[] | null>(null)
-const TasksDispatchContext = createContext<React.Dispatch<Action> | null>(null)
+const TasksDispatchContext = createContext<React.Dispatch<Action>>(()=>{})
 let nextId = 3
 
 const Task: React.FC<{ task: Task }> = ({ task }) => {
