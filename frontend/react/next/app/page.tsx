@@ -9,6 +9,7 @@ import ReducerDemo from "./ReducerDemo"
 import ContextDemo from "./ContextDemo"
 import ReducerContextDemo from "./ReducerContextDemo"
 import RefDemo from "./RefDemo"
+import EffectDemo from "./EffectDemo"
 import Demo from "./Demo"
 
 export default function App() {
@@ -22,7 +23,8 @@ export default function App() {
       {/* <ReducerDemo /> */}
       {/* <ContextDemo /> */}
       {/* <ReducerContextDemo /> */}
-      <RefDemo />
+      {/* <RefDemo /> */}
+      <EffectDemo />
       {/* <Demo /> */}
     </>)
 }

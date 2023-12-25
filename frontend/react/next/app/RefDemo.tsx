@@ -1,16 +1,26 @@
-import { useRef } from "react";
+import { forwardRef, useRef } from 'react';
+
+const MyInput = forwardRef<HTMLInputElement>((props, ref) => {
+    return (
+        <input {...props} ref={ref} />
+    )
+})
 
 export default function RefDemo() {
-  let ref = useRef(0);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  function handleClick() {
-    ref.current = ref.current + 1;
-    alert('You clicked ' + ref.current + ' times!');
-  }
+    function handleClick() {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }
 
-  return (
-    <button onClick={handleClick}>
-      Click me!
-    </button>
-  );
+    return (
+        <>
+            <MyInput ref={inputRef} />
+            <button onClick={handleClick}>
+                Focus input
+            </button>
+        </>
+    )
 }
