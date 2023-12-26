@@ -1,10 +1,10 @@
-import { forwardRef, useRef } from 'react';
+import React , { forwardRef, useRef } from 'react';
 
-const MyInput = forwardRef<HTMLInputElement>((props, ref) => {
+const MyInput = React.memo(forwardRef<HTMLInputElement>((props, ref) => {
     return (
         <input {...props} ref={ref} />
     )
-})
+}))
 
 export default function RefDemo() {
     const inputRef = useRef<HTMLInputElement>(null);

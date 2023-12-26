@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 export default function EffectDemo() {
-    useEffect(() => {
-        // code
-    })
+    // useEffect(() => {
+    //     // code
+    // })
     return (
         <p>Effect Demo</p>
     )
