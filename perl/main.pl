@@ -1,15 +1,14 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-BEGIN { unshift @INC, 'module'; }
-use Foo ':all';
-use File::Tee qw(tee);
+use Time::HiRes qw(gettimeofday tv_interval);
 
-my $version = "trunk";
-# my $version = "R7_1";
-# my $version = "R7_2";
-# my $version = "R6";
-
-if ( $version =~ /^(R7_1|R7_2|trunk)$/ ) {
-    print("version: $version \n");
+# Define a custom warning handler to handle warnings triggered by 'warn'.
+sub custom_warn_handler {
+    my ($warning) = @_;
+    $warning =~ s/at\s\S+ line \d+\.//;
+    print "[Warning]: $warning";
 }
+$SIG{__WARN__} = \&custom_warn_handler;
+
+warn("This is a custom warning.");
