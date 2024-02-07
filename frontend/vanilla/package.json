@@ -8,13 +8,14 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "pnpm dlx mocha --recursive src/test",
-    "main": "node src/main.js"
+    "main": "node src/main.js",
+    "tsc": "tsc"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
     "chai": "^4.3.7",
-    "loadsh": "^0.0.4"
+    "loadsh": "^0.0.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   },
   "volta": {
     "node": "18.17.1",

@@ -12,3 +12,21 @@ sub custom_warn_handler {
 $SIG{__WARN__} = \&custom_warn_handler;
 
 warn("This is a custom warning.");
+
+
+#########################################################################
+# Custom Info
+# Define a custom subroutine to print informational messages.
+#########################################################################
+
+sub info {
+    my ($info_message) = @_;
+    print "[Info]: $info_message\n";
+}
+
+# Example usage:
+info("This is an info message.");
+
+print "start time: " . localtime(time) . "\n";
+sleep(5);
+print "end time: " . localtime(time) . "\n";

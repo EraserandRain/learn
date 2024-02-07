@@ -11,6 +11,7 @@ import ReducerContextDemo from "./ReducerContextDemo"
 import RefDemo from "./RefDemo"
 import EffectDemo from "./EffectDemo"
 import EffectEventDemo from "./EffectEventDemo"
+import CustomHookDemo from './CustomHookDemo';
 import Demo from "./Demo"
 
 export default function App() {
@@ -26,7 +27,8 @@ export default function App() {
       {/* <ReducerContextDemo /> */}
       {/* <RefDemo /> */}
       {/* <EffectDemo /> */}
-      <EffectEventDemo />
+      {/* <EffectEventDemo /> */}
+      <CustomHookDemo />
       {/* <Demo /> */}
     </>)
 }

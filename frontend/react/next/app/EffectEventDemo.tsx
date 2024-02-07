@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { experimental_useEffectEvent as useEffectEvent } from 'react';
+// useEffectEvent is not available in React stable version , which might cause potential issues.
 
-export default function Timer() {
+export default function EffectEventDemo() {
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(1);
+  const [delay, setDelay] = useState(100);
 
   const onTick = useEffectEvent(() => {
     setCount(c => c + increment)
@@ -12,10 +14,10 @@ export default function Timer() {
   useEffect(() => {
     const id = setInterval(() => {
       onTick()
-    }, 1000);
+    }, delay)
     return () => {
       clearInterval(id);
-    };
+    }
   });
 
   return (
@@ -26,7 +28,7 @@ export default function Timer() {
       </h1>
       <hr />
       <p>
-        Every second, increment by:
+        Increment by:
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -34,6 +36,16 @@ export default function Timer() {
         <button onClick={() => {
           setIncrement(i => i + 1);
         }}>+</button>
+      </p>
+      <p>
+        Increment delay:
+        <button disabled={delay === 100} onClick={() => {
+          setDelay(d => d - 100);
+        }}>–100 ms</button>
+        <b>{delay} ms</b>
+        <button onClick={() => {
+          setDelay(d => d + 100);
+        }}>+100 ms</button>
       </p>
     </>
   );
