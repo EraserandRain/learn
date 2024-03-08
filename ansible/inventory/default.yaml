@@ -1,14 +1,8 @@
 all:
   children:
     node:
-      hosts:
-        master:
       children:
+        master:
+          hosts: master1
         worker:
-          hosts:
-            worker1: 
-              ansible_host: 172.20.178.153
-            worker2:
-              ansible_host: 172.20.186.48
-            worker3:
-              ansible_host: 172.20.176.214
+          hosts: worker[1:2]
