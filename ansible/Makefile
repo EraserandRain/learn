@@ -4,13 +4,15 @@
 SHELL := /bin/bash
 ENTRY_FILE := entry.yaml
 play := ansible-playbook $(ENTRY_FILE)
+create_log_dir := mkdir -p log/
 
-total:
+total: dependency
 	$(play)
 
 dependency:
+	$(create_log_dir)
 	ansible-galaxy install -r requirements.yaml
 
 lint:
-	mkdir -p log/
+	$(create_log_dir)
 	ansible-lint ./roles
