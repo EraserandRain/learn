@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  httpserver:
+    specifier: ^0.3.0
+    version: 0.3.0
+
 devDependencies:
   chai:
     specifier: ^4.3.7
@@ -218,6 +223,12 @@ packages:
     dev: true
     optional: true
 
+  /access-log@0.3.9:
+    resolution: {integrity: sha512-yeQS+6Qh3mTR8hdwcRiAI+/M/UQlRek6vKZ+TxOuDR8KLL3N9GVQyZAVX2AC01uGN1C6tx46sqAh+UTgv7nGxQ==}
+    dependencies:
+      strftime: 0.6.2
+    dev: false
+
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
@@ -239,12 +250,22 @@ packages:
     resolution: {integrity: sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==}
     dev: true
 
+  /cleanse@0.0.3:
+    resolution: {integrity: sha512-GzK1hHVr70UYpQ98nV3UG4cCb09YBm/IyVsnACNnLjgccA5XWBZ0kUaM84cFlKwC0IPmDvmB5+weWBKBP0JiiQ==}
+    dev: false
+
   /deep-eql@4.1.3:
     resolution: {integrity: sha512-WaEtAOpRA1MQ0eohqZjpGD8zdI0Ovsm8mmFhaDN8dvDZzyoUMcYDnf5Y6iu7HTXxf8JDS23qWa4a+hKCDyOPzw==}
     engines: {node: '>=6'}
     dependencies:
       type-detect: 4.0.8
     dev: true
+
+  /easyreq@0.1.3:
+    resolution: {integrity: sha512-+vMvS9b32RpIheRkcTTI9+QsOqRNEmZDCbBMJejsy7LNN+8CvdY8Yq+hv2AXfRkxa0tmwzsBf1I9hRgJ3Kd4eA==}
+    dependencies:
+      cleanse: 0.0.3
+    dev: false
 
   /esbuild@0.18.17:
     resolution: {integrity: sha512-1GJtYnUxsJreHYA0Y+iQz2UEykonY66HNWOb0yXYZi9/kNrORUEHVg87eQsCtqh59PEJ5YVZJO98JHznMJSWjg==}
@@ -288,6 +309,28 @@ packages:
     resolution: {integrity: sha512-Hm0ixYtaSZ/V7C8FJrtZIuBBI+iSgL+1Aq82zSu8VQNB4S3Gk8e7Qs3VwBDJAhmRZcFqkl3tQu36g/Foh5I5ig==}
     dev: true
 
+  /he@0.4.1:
+    resolution: {integrity: sha512-wFn1JlcsgbcWEawQ6A1GztgNRRl6UyEtaARIDpAeH3c35T/9id/QQKvap1NAz6Yk2oKrKwXQZZFERS0tl9E0Jg==}
+    hasBin: true
+    dev: false
+
+  /httpserver@0.3.0:
+    resolution: {integrity: sha512-5HAbJfiXxtTTjnXgGs7LBIh3rgCXy9fL2sjsrV+gQheAZUeV+EXWCBTF2wB8h0AokikMARUEjue2hOL76BPcPg==}
+    hasBin: true
+    dependencies:
+      access-log: 0.3.9
+      latest: 0.2.0
+      posix-getopt: 1.2.1
+      static-route: 0.1.2
+    dev: false
+
+  /latest@0.2.0:
+    resolution: {integrity: sha512-nsIM/FjwLcsKZ1KDAw5CivnM26zzMs3zGBL4SdjYXHI5tMcOWjGhFDMBKIum4WNAkZmeVw7zU1jR2H2UiKoQVA==}
+    hasBin: true
+    dependencies:
+      npm: 2.15.12
+    dev: false
+
   /loadsh@0.0.4:
     resolution: {integrity: sha512-U+wLL8InpfRalWrr+0SuhWgGt10M4OyAk6G8xCYo2rwpiHtxZkWiFpjei0vO463ghW8LPCdhqQxXlMy2qicAEw==}
     deprecated: This is a typosquat on the popular Lodash package. This is not maintained nor is the original Lodash package.
@@ -299,11 +342,92 @@ packages:
       get-func-name: 2.0.0
     dev: true
 
+  /mime@1.2.11:
+    resolution: {integrity: sha512-Ysa2F/nqTNGHhhm9MV8ure4+Hc+Y8AWiqUdHxsO7xu8zc92ND9f3kpALHjaP026Ft17UfxrMt95c50PLUeynBw==}
+    dev: false
+
   /nanoid@3.3.6:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
+
+  /npm@2.15.12:
+    resolution: {integrity: sha512-WMoAJ518W0vHjWy1abYnTeyG9YQpSoYGPxAx7d0C0L7U7Jo44bZsrvTjccmDohCJGxpasdKfqsKsl6o/RUPx6A==}
+    hasBin: true
+    dev: false
+    bundledDependencies:
+      - abbrev
+      - ansi
+      - ansi-regex
+      - ansicolors
+      - ansistyles
+      - archy
+      - async-some
+      - block-stream
+      - char-spinner
+      - chmodr
+      - chownr
+      - cmd-shim
+      - columnify
+      - config-chain
+      - dezalgo
+      - editor
+      - fs-vacuum
+      - fs-write-stream-atomic
+      - fstream
+      - fstream-npm
+      - github-url-from-git
+      - github-url-from-username-repo
+      - glob
+      - graceful-fs
+      - hosted-git-info
+      - imurmurhash
+      - inflight
+      - inherits
+      - ini
+      - init-package-json
+      - lockfile
+      - lru-cache
+      - minimatch
+      - mkdirp
+      - node-gyp
+      - nopt
+      - normalize-git-url
+      - normalize-package-data
+      - npm-cache-filename
+      - npm-install-checks
+      - npm-package-arg
+      - npm-registry-client
+      - npm-user-validate
+      - npmlog
+      - once
+      - opener
+      - osenv
+      - path-is-inside
+      - read
+      - read-installed
+      - read-package-json
+      - readable-stream
+      - realize-package-specifier
+      - request
+      - retry
+      - rimraf
+      - semver
+      - sha
+      - slide
+      - sorted-object
+      - spdx-license-ids
+      - strip-ansi
+      - tar
+      - text-table
+      - uid-number
+      - umask
+      - validate-npm-package-license
+      - validate-npm-package-name
+      - which
+      - wrappy
+      - write-file-atomic
 
   /pathval@1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
@@ -312,6 +436,10 @@ packages:
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: true
+
+  /posix-getopt@1.2.1:
+    resolution: {integrity: sha512-BbGTiH8MOWAuc6h5yITkSn9k3HP4+QOCV9t6I5F62OrH7zqTHRo08QNsgELRreTBxcvRhbSpMoUnAx77Dz4yUA==}
+    dev: false
 
   /postcss@8.4.27:
     resolution: {integrity: sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==}
@@ -334,6 +462,19 @@ packages:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /static-route@0.1.2:
+    resolution: {integrity: sha512-54u3SjBq7EsbufVsezoRK5/g8opjtYf+lBico2wKAQIHap4KbGCN63DUqvtQU1V4pX0+cmTMFHxOy2brKC1PWQ==}
+    dependencies:
+      easyreq: 0.1.3
+      he: 0.4.1
+      mime: 1.2.11
+    dev: false
+
+  /strftime@0.6.2:
+    resolution: {integrity: sha512-mEzR2tqZLXra/X1Orxs91XfcW4/gwGKZ1c0FvGVqf81ei3rCNIjHx6ZSHtcJaL3OYUkhJe7P4+mYfadFH6o2QQ==}
+    engines: {node: '>=0.2.0'}
+    dev: false
 
   /type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}

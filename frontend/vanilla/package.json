@@ -20,5 +20,8 @@
   "volta": {
     "node": "18.17.1",
     "pnpm": "8.6.11"
+  },
+  "dependencies": {
+    "httpserver": "^0.3.0"
   }
 }
