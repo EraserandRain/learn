@@ -3,6 +3,4 @@ all:
     node:
       children:
         master:
-          hosts: master1
-        worker:
-          hosts: worker[1:2]
+          hosts: localhost

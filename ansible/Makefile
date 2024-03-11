@@ -13,6 +13,9 @@ dependency:
 	$(create_log_dir)
 	ansible-galaxy install -r requirements.yaml
 
+fr:
+	$(play) -t first-role
+
 lint:
 	$(create_log_dir)
 	ansible-lint ./roles

@@ -1,5 +1,7 @@
 ---
 # tasks file for first-role
-- name: Test
-  debug:
-    msg: "{{ inventory_hostname }}"
+
+- name: Download and install cri-dockerd deb file
+  become: true
+  apt:
+    deb: {{ cridockerd_pkg_url }}
