@@ -1,0 +1,3 @@
+interface MsgInfo {
+    year: number
+}
