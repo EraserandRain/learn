@@ -4,5 +4,5 @@ GIT_COMMIT := $(shell git rev-parse --short HEAD)
 push:
 	git add -A
 	git commit -m "test: Auto Deploy ${GIT_COMMIT} at ${CURRENT_DATE}"
-	git push origin main
+	git push 
 	echo "deploy success!"
