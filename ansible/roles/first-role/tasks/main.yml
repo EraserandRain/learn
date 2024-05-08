@@ -1,7 +1,0 @@
----
-# tasks file for first-role
-
-- name: Download and install cri-dockerd deb file
-  become: true
-  apt:
-    deb: {{ cridockerd_pkg_url }}
