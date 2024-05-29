@@ -1,0 +1,27 @@
+[project]
+name = "rye-example"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "EraserandRain", email = "1349291258@qq.com" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rye_example"]
+
+[project.scripts]
+my-hello-script = 'rye_example:main.hello'
