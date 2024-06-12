@@ -1,10 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-int value = 10;
-
-for (int i = 0; i < 5; i++)
+﻿namespace Test
 {
-    value += i;
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            Hello.Message value = new()
+            {
+                Msg = "Dotnet"
+            };
+            string name = value.Msg;
+            Hello.HelloWorld.Foo(name);
+            Hello.HelloWorld.Foo(Hello.Message.Eg);
+        }
+    }
 }
-
-Console.WriteLine("str="+ value);
