@@ -6,6 +6,8 @@ namespace Hello
         {
             Console.WriteLine($"Hello {v}!");
         }
+        public int Id { get; set; }
+        public string? Name { get; set; }
     }
 
     class Message
@@ -23,5 +25,6 @@ namespace Hello
                 _Msg = value;
             }
         }
+        
     }
 }
