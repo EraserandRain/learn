@@ -10,8 +10,8 @@ namespace Test
                 Msg = "Dotnet"
             };
             string name = value.Msg;
-            HelloWorld.Foo(name);
-            HelloWorld.Foo(Message.Eg);
+            Message.Hello(name);
+            Message.Hello(Message.Eg);
         }
     }
 }
