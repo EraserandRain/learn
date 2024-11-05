@@ -1,17 +1,14 @@
 ﻿using Hello;
+using Npgsql;
 namespace Test
 {
     class Test
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Message value = new()
-            {
-                Msg = "Dotnet"
-            };
-            string name = value.Msg;
-            Message.Hello(name);
-            Message.Hello(Message.Eg);
+
+            Console.WriteLine("halo halo");
+            Console.WriteLine("halo2 halo2");
         }
     }
 }
