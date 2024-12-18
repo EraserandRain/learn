@@ -4,11 +4,17 @@ namespace Test
 {
     class Test
     {
-        static async Task Main(string[] args)
+        public static void Main()
         {
 
-            Console.WriteLine("halo halo");
-            Console.WriteLine("halo2 halo2");
+            int x = 2;
+            Add3(ref x);
+            Console.WriteLine($"x={x}");
+        }
+
+        public static void Add3(ref int x)
+        {
+            x += 3;
         }
     }
 }
