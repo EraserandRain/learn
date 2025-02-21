@@ -2,10 +2,19 @@
   "name": "vanillajs",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun --hot index.ts",
+    "start": "bun run index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@elysiajs/html": "latest",
+    "elysia": "latest",
+    "nouislider": "^15.6.0"
   }
 }
