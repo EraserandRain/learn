@@ -1,0 +1,7 @@
+[database]
+user = "postgres"
+password = "Post123!#"
+host = "postgre.cziaw4ic4j27.ap-southeast-1.rds.amazonaws.com"
+port = 5432
+dbname = "postgres"
+url = "postgresql+psycopg2://username:password@localhost:5432/yourdatabase"

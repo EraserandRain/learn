@@ -7,6 +7,7 @@ export default function Page() {
     <>
       <p>
         <FaGithub style={{ display: "inline" }} /><span>Hello, Home page!</span>
+        <button type="submit" value="haha" name="btn"></button>
       </p>
     </>
   )
