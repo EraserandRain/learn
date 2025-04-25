@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  blazor-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8088:8088"
+      - "8089:8089"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    restart: unless-stopped 
